@@ -68,21 +68,9 @@ export function VideoAuctionSheet({ isOpen, onClose }: VideoAuctionSheetProps) {
     },
   });
 
-  const approve = useContractWrite({
-    config: {
-      address: A0X_CONTRACT_ADDRESS,
-      abi: A0X_ABI,
-      functionName: 'approve',
-    }
-  });
+  const { writeContract: approve } = useContractWrite()
 
-  const placeBid = useContractWrite({
-    config: {
-      address: AUCTION_CONTRACT_ADDRESS,
-      abi: AUCTION_ABI,
-      functionName: 'placeBid',
-    }
-  });
+  const { writeContract: placeBid } = useContractWrite()
 
   const isBaseNetwork = address && address.startsWith('0x') && address.length === 42;
   const currentBid = "52M $A0X";
@@ -98,14 +86,20 @@ export function VideoAuctionSheet({ isOpen, onClose }: VideoAuctionSheetProps) {
       
       if (allowance && allowance < bidAmountWei) {
         setIsApproving(true);
-        await approve.writeAsync({
+        await approve({
+          address: A0X_CONTRACT_ADDRESS as `0x${string}`,
+          abi: A0X_ABI,
+          functionName: 'approve',
           args: [AUCTION_CONTRACT_ADDRESS, bidAmountWei],
         });
         setIsApproving(false);
       }
 
       setIsBidding(true);
-      await placeBid.writeAsync({
+      await placeBid({
+        address: AUCTION_CONTRACT_ADDRESS as `0x${string}`,
+        abi: AUCTION_ABI,
+        functionName: 'placeBid',
         args: [bidAmountWei],
       });
       setIsBidding(false);
