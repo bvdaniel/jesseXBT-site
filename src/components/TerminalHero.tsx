@@ -346,7 +346,7 @@ const bannerLines = [
               </button>
             </div>
 
-            {/* Right - Social Links with modern hover effects */}
+            {/* R ight - Social Links with modern hover effects */}
             <div className="flex justify-center sm:justify-end items-center space-x-6">
               <Link href="https://x.com/a0xbot" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
