@@ -172,6 +172,7 @@ const bannerLines = [
   };
 
   const handleBidVideo = () => {
+    console.log('Opening auction sheet...');
     setIsAuctionOpen(true);
   };
 
@@ -408,7 +409,10 @@ const bannerLines = [
 
       <VideoAuctionSheet 
         isOpen={isAuctionOpen} 
-        onClose={() => setIsAuctionOpen(false)} 
+        onClose={() => {
+          console.log('Closing auction sheet...');
+          setIsAuctionOpen(false);
+        }} 
       />
 
       <style jsx global>{`

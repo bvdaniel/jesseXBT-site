@@ -29,6 +29,18 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Environment Setup
+
+This project requires certain environment variables to be set up. Create a `.env.local` file in the root directory with the following variables:
+
+```bash
+NEXT_PUBLIC_MOONXBT_API_KEY=your_api_key_here
+NEXT_PUBLIC_MOONXBT_API_SECRET=your_api_secret_here
+NEXT_PUBLIC_MOONXBT_API_PASSPHRASE=your_passphrase_here
+```
+
+Never commit these values to the repository. The `.env.local` file is automatically ignored by Git.
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
