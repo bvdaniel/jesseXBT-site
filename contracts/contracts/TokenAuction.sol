@@ -31,6 +31,11 @@ contract TokenAuction is Ownable {
     
     // Track the start time of each auction
     mapping(uint256 => uint256) public auctionStartTimes;
+
+    // Last auction winner information
+    address public lastAuctionWinner;
+    uint256 public lastAuctionWinningAmount;
+    string public lastAuctionResourceValue;
     
     event BidPlaced(uint256 indexed auctionId, address indexed bidder, uint256 amount, string resourceValue);
     event BidRefunded(uint256 indexed auctionId, address indexed bidder, uint256 amount);
@@ -49,6 +54,7 @@ contract TokenAuction is Ownable {
         require(address(biddingToken) != address(0), "Bidding token not set");
         require(amount > _bids[currentAuctionId].amount, "Bid too low");
         require(bytes(resourceValue).length > 0, "Resource value required");
+        require(getTimeRemaining() > 0, "Auction has ended");
         
         address previousBidder = _bids[currentAuctionId].bidder;
         uint256 previousAmount = _bids[currentAuctionId].amount;
@@ -76,8 +82,16 @@ contract TokenAuction is Ownable {
         require(block.timestamp > auctionStartTime + auctionDuration, "Auction not ended");
         
         if (currentBid.bidder != address(0)) {
+            // Update last auction winner information
+            lastAuctionWinner = currentBid.bidder;
+            lastAuctionWinningAmount = currentBid.amount;
+            lastAuctionResourceValue = currentBid.resourceValue;
             emit AuctionEnded(currentAuctionId, currentBid.bidder, currentBid.amount, currentBid.resourceValue);
         } else {
+            // Reset last auction winner information if no bids
+            lastAuctionWinner = address(0);
+            lastAuctionWinningAmount = 0;
+            lastAuctionResourceValue = defaultResourceValue;
             emit AuctionEnded(currentAuctionId, address(0), 0, defaultResourceValue);
         }
         
@@ -93,6 +107,25 @@ contract TokenAuction is Ownable {
         });
         // Record the start time of the new auction
         auctionStartTimes[currentAuctionId] = block.timestamp;
+    }
+
+    // Get remaining time in current auction (in seconds)
+    function getTimeRemaining() public view returns (uint256) {
+        uint256 startTime = auctionStartTimes[currentAuctionId];
+        uint256 endTime = startTime + auctionDuration;
+        if (block.timestamp >= endTime) {
+            return 0;
+        }
+        return endTime - block.timestamp;
+    }
+
+    // Get last auction winner information
+    function getLastAuctionWinner() public view returns (
+        address winner,
+        uint256 amount,
+        string memory resourceValue
+    ) {
+        return (lastAuctionWinner, lastAuctionWinningAmount, lastAuctionResourceValue);
     }
     
     // Funciones de configuración para el owner

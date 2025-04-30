@@ -85,19 +85,18 @@ describe("TokenAuction Integration Tests", function () {
       const scriptPath = path.join(__dirname, "../scripts/deploy-token-auction.ts");
       const scriptContent = fs.readFileSync(scriptPath, "utf8");
       
-      // Check that the script handles the required parameters
-      expect(scriptContent).to.include("biddingTokenAddress=");
-      expect(scriptContent).to.include("resourceName=");
-      expect(scriptContent).to.include("defaultResourceValue=");
+      // Check for the parameter object construction and JSON handling
+      expect(scriptContent).to.include("const paramObj = {");
+      expect(scriptContent).to.include("biddingTokenAddress: initialTokenAddressForBid,");
+      expect(scriptContent).to.include("resourceName: \"QR Destination URL\"");
+      expect(scriptContent).to.include("defaultResourceValue: \"https://qrcoin.fun\"");
       
-      // Check that the script handles gas parameters
-      expect(scriptContent).to.include("maxFeePerGas=");
-      expect(scriptContent).to.include("maxPriorityFeePerGas=");
+      // Check for proper command construction with JSON parameters
+      expect(scriptContent).to.include("const command = `npx hardhat ignition deploy ignition/modules/TokenAuction.ts --network base --parameters \"${escapedJson}\"`");
       
       // Check that the script uses environment variables
       expect(scriptContent).to.include("process.env.BASE_RPC_URL");
       expect(scriptContent).to.include("process.env.PRIVATE_KEY");
-      expect(scriptContent).to.include("process.env.QR_TOKEN_ADDRESS");
     });
     
     it("Should use correct gas estimation in deployment script", async function () {

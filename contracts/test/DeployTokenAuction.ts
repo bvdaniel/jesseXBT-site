@@ -83,12 +83,29 @@ describe("TokenAuction Deployment Script", function () {
     // Read the deployment script
     const scriptPath = path.join(__dirname, "../scripts/deploy-token-auction.ts");
     const scriptContent = fs.readFileSync(scriptPath, "utf8");
+
+    // Check for the parameter object construction and the command using the --parameters flag
+    expect(scriptContent).to.include("const paramObj = {");
+    expect(scriptContent).to.include("biddingTokenAddress: initialTokenAddressForBid,");
+    expect(scriptContent).to.include("const command = `npx hardhat ignition deploy ignition/modules/TokenAuction.ts --network base --parameters \"${escapedJson}\"`");
+  });
+
+  it("Should have correct parameter handling in deployment script", async function () {
+    // Read the deployment script
+    const scriptPath = path.join(__dirname, "../scripts/deploy-token-auction.ts");
+    const scriptContent = fs.readFileSync(scriptPath, "utf8");
     
-    // Check for parameters
-    expect(scriptContent).to.include("biddingTokenAddress=");
-    expect(scriptContent).to.include("maxFeePerGas=");
-    expect(scriptContent).to.include("maxPriorityFeePerGas=");
-    expect(scriptContent).to.include("resourceName=QR Destination URL");
-    expect(scriptContent).to.include("defaultResourceValue=https://qrcoin.fun");
+    // Check for the parameter object construction and JSON handling
+    expect(scriptContent).to.include("const paramObj = {");
+    expect(scriptContent).to.include("biddingTokenAddress: initialTokenAddressForBid,");
+    expect(scriptContent).to.include("resourceName: \"QR Destination URL\"");
+    expect(scriptContent).to.include("defaultResourceValue: \"https://qrcoin.fun\"");
+    
+    // Check for proper command construction with JSON parameters
+    expect(scriptContent).to.include("const command = `npx hardhat ignition deploy ignition/modules/TokenAuction.ts --network base --parameters \"${escapedJson}\"`");
+    
+    // Check that the script uses environment variables
+    expect(scriptContent).to.include("process.env.BASE_RPC_URL");
+    expect(scriptContent).to.include("process.env.PRIVATE_KEY");
   });
 });
