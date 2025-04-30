@@ -348,13 +348,19 @@ const bannerLines = [
 
             {/* R ight - Social Links with modern hover effects */}
             <div className="flex justify-center sm:justify-end items-center space-x-6">
-              <Link href="https://x.com/a0xbot" target="_blank" rel="noopener noreferrer" className="group">
+              <Link href="https://x.com/moonXBT_ai" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
-                  <FaTwitter className="w-5 h-5 text-white/70 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5" />
+                  <Image
+                    src="/assets/x.png"
+                    alt="X"
+                    width={20}
+                    height={20}
+                    className="opacity-70 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5"
+                  />
                   <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </div>
               </Link>
-              <Link href="https://warpcast.com/a0x" target="_blank" rel="noopener noreferrer" className="group">
+              <Link href="https://warpcast.com/ai420z" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
                   <Image
                     src="/assets/farcaster.png"
@@ -366,27 +372,33 @@ const bannerLines = [
                   <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </div>
               </Link>
+              <Link href="https://www.tiktok.com/@moonxbt.fun" target="_blank" rel="noopener noreferrer" className="group">
+                <div className="relative">
+                  <FaTiktok className="w-5 h-5 text-white/70 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5" />
+                  <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                </div>
+              </Link>
               <Link href="https://t.me/A0X_Portal" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
                   <FaTelegram className="w-5 h-5 text-white/70 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5" />
                   <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </div>
               </Link>
-              <Link href="https://www.linkedin.com/company/a0x" target="_blank" rel="noopener noreferrer" className="group">
-                <div className="relative">
-                  <FaLinkedin className="w-5 h-5 text-white/70 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5" />
-                  <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                </div>
-              </Link>
-              <Link href="https://instagram.com/a0x.co" target="_blank" rel="noopener noreferrer" className="group">
+              <Link href="https://www.instagram.com/moonxbt_ia" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
                   <FaInstagram className="w-5 h-5 text-white/70 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5" />
                   <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </div>
               </Link>
-              <Link href="https://tiktok.com/@a0x.co" target="_blank" rel="noopener noreferrer" className="group">
+              <Link href="https://zora.co/@moonxbt" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
-                  <FaTiktok className="w-5 h-5 text-white/70 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5" />
+                  <Image
+                    src="/assets/zora.png"
+                    alt="Zora"
+                    width={20}
+                    height={20}
+                    className="opacity-70 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5"
+                  />
                   <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </div>
               </Link>
