@@ -1,0 +1,11 @@
+{
+  "contractAddress": "0xc5287ca4154d37ceda389efc168d167443f273db",
+  "txHash": "0x45f6ad1546105808e230bc72f9442da61bb6cf2de9810922404197d771678fe6",
+  "deployedAt": "2025-04-27T04:56:49.857Z",
+  "network": "base",
+  "constructorArgs": {
+    "biddingTokenAddress": "0x833589fCD6eDb6E08f4c7C32D4f71b54bdA02913",
+    "resourceName": "QR Destination URL",
+    "defaultResourceValue": "https://qrcoin.fun"
+  }
+}

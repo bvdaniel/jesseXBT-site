@@ -1,0 +1,25 @@
+{
+  "name": "hardhat-project",
+  "scripts": {
+    "test": "hardhat test",
+    "test:gas": "REPORT_GAS=true hardhat test",
+    "test:coverage": "hardhat coverage",
+    "test:main": "hardhat test test/TokenAuction.ts",
+    "test:errors": "hardhat test test/TokenAuctionErrors.ts",
+    "test:events": "hardhat test test/TokenAuctionEvents.ts",
+    "test:gas-usage": "hardhat test test/TokenAuctionGas.ts",
+    "test:integration": "hardhat test test/TokenAuctionIntegration.ts",
+    "test:mock": "hardhat test test/MockERC20.ts",
+    "test:deploy": "hardhat test test/DeployTokenAuction.ts",
+    "test:ignition": "hardhat test test/IgnitionModule.ts",
+    "compile": "hardhat compile",
+    "deploy:base": "ts-node scripts/deploy-token-auction.ts"
+  },
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox-viem": "^3.0.0",
+    "@openzeppelin/contracts": "^5.3.0",
+    "dotenv": "^16.5.0",
+    "hardhat": "^2.23.0",
+    "ts-node": "^10.9.1"
+  }
+}
