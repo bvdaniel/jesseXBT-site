@@ -408,12 +408,17 @@ const bannerLines = [
         <div className="hidden lg:block w-[400px] h-full relative">
           <video
             className="absolute inset-0 w-full h-full object-cover"
-            src="/assets/jessexbt.mp4"
+            src="/assets/jesseXBT.mp4"
             autoPlay
             loop
             muted
             playsInline
-          />
+            preload="auto"
+            poster="/assets/jesseXBT-poster.jpg"
+          >
+            <source src="/assets/jesseXBT.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
           <div className="absolute inset-0 bg-gradient-to-r from-[#1752F0] via-transparent to-transparent" />
         </div>
       </div>
