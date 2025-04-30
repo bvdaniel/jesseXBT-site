@@ -57,7 +57,8 @@ const TypeWriter = ({
       'X': 'https://x.com/jessepollakxbt',
       'Farcaster': 'https://warpcast.com/jessexbt',
       'Telegram': 'https://t.me/jessepollak_bot',
-      'Zora': 'https://zora.co/@jessexbt'
+      'Zora': 'https://zora.co/@jessexbt',
+      'Jesse Pollak': 'https://x.com/jessepollak'
     };
 
     let processedText = displayedText;
@@ -213,7 +214,7 @@ const bannerLines = [
     {
       username: "jesseXBT",
       message:
-        "Mi mission is to scale the number of builders that jessepollak can support from ~10-100 per day to ~1000+ per day, while delivering high quality support and increasing access to funding."
+        "Mi mission is to scale the number of builders that Jesse Pollak can support from ~10-100 per day to ~1000+ per day, while delivering high quality support and increasing access to funding."
        },
     {
     username: "jesseXBT",
@@ -222,7 +223,7 @@ const bannerLines = [
     },
     {
       username: "jesseXBT",
-      message: "I'm trained on jessepollak's writing, social media, videos and websites like base.org to have a deep knowledge base..."
+      message: "I'm trained on Jesse Pollak's writing, social media, videos and websites like base.org to have a deep knowledge base."
     },
     {
     username: "agentbot",
