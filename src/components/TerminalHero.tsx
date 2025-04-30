@@ -1,13 +1,12 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useAnimation } from "framer-motion";
 import { useChatSheet } from "@/context/ChatSheetContext";
 import { FaTwitter, FaTelegram, FaLinkedin, FaInstagram, FaTiktok } from "react-icons/fa";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { VideoAuctionSheet } from "@/components/VideoAuctionSheet";
 
 interface TerminalLine {
   id: string;
@@ -44,18 +43,142 @@ const TypeWriter = ({
         if (currentIndex === text.length - 1) {
           setIsComplete(true);
         }
-      }, 15); // Faster typing speed
+      }, 15);
 
       return () => clearTimeout(timeout);
     }
   }, [currentIndex, text]);
 
+  const renderText = () => {
+    if (!isComplete) return displayedText;
+
+    // Replace social media mentions with links
+    const socialLinks = {
+      'X': 'https://x.com/jessepollakxbt',
+      'Farcaster': 'https://warpcast.com/jessexbt',
+      'Telegram': 'https://t.me/jessepollak_bot',
+      'Zora': 'https://zora.co/@jessexbt'
+    };
+
+    let processedText = displayedText;
+    Object.entries(socialLinks).forEach(([platform, url]) => {
+      const regex = new RegExp(`\\b${platform}\\b`, 'g');
+      processedText = processedText.replace(regex, `<a href="${url}" target="_blank" rel="noopener noreferrer" class="text-blue-300 hover:text-blue-200 transition-colors duration-300">${platform}</a>`);
+    });
+
+    return <span dangerouslySetInnerHTML={{ __html: processedText }} />;
+  };
+
   return (
     <div className={className} onClick={onClick} style={onClick ? { cursor: 'pointer' } : undefined}>
-      {displayedText}
+      {renderText()}
       {!isComplete && (
         <span className="inline-block w-2 h-4 ml-1 bg-white/80 animate-pulse" />
       )}
+    </div>
+  );
+};
+
+const BouncingLogo = () => {
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
+  const [isHovered, setIsHovered] = useState(false);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!logoRef.current || !containerRef.current) return;
+
+    const logo = logoRef.current;
+    const container = containerRef.current;
+    let animationFrameId: number;
+
+    const updatePosition = () => {
+      setPosition(prev => {
+        // Calculate center of logo
+        const logoRect = logo.getBoundingClientRect();
+        const logoCenterX = prev.x + logoRect.width / 2;
+        const logoCenterY = prev.y + logoRect.height / 2;
+
+        // Calculate distance and direction to mouse
+        const dx = mousePosition.x - logoCenterX;
+        const dy = mousePosition.y - logoCenterY;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        // Add floating motion
+        const floatX = Math.sin(Date.now() / 2000) * 2;
+        const floatY = Math.cos(Date.now() / 1500) * 2;
+
+        // Calculate new position with mouse repulsion and floating
+        let newX = prev.x + floatX;
+        let newY = prev.y + floatY;
+
+        // Add mouse repulsion when close
+        if (distance < 200) {
+          const repulsion = (200 - distance) / 20;
+          newX -= (dx / distance) * repulsion;
+          newY -= (dy / distance) * repulsion;
+        }
+
+        // Keep within bounds
+        const containerRect = container.getBoundingClientRect();
+        newX = Math.max(0, Math.min(newX, containerRect.width - logoRect.width));
+        newY = Math.max(0, Math.min(newY, containerRect.height - logoRect.height));
+
+        return { x: newX, y: newY };
+      });
+
+      animationFrameId = requestAnimationFrame(updatePosition);
+    };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const containerRect = container.getBoundingClientRect();
+      setMousePosition({
+        x: e.clientX - containerRect.left,
+        y: e.clientY - containerRect.top
+      });
+    };
+
+    container.addEventListener('mousemove', handleMouseMove);
+    animationFrameId = requestAnimationFrame(updatePosition);
+
+    return () => {
+      container.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [mousePosition]);
+
+  return (
+    <div 
+      ref={containerRef} 
+      className="absolute inset-0 overflow-hidden"
+    >
+      <motion.div
+        ref={logoRef}
+        className="absolute w-8 h-8 cursor-pointer"
+        animate={{
+          x: position.x,
+          y: position.y,
+          rotate: isHovered ? [0, 360] : [0, 0],
+          scale: isHovered ? 1.2 : 1
+        }}
+        transition={{
+          x: { duration: 0.1 },
+          y: { duration: 0.1 },
+          rotate: { duration: 1, repeat: Infinity, ease: "linear" },
+          scale: { duration: 0.2 }
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <Image
+          src="/assets/baselogo.png"
+          alt="Base Logo"
+          width={32}
+          height={32}
+          className="opacity-50 hover:opacity-100 transition-opacity duration-300"
+        />
+      </motion.div>
     </div>
   );
 };
@@ -72,40 +195,15 @@ const TerminalHero = () => {
   const [isAuctionOpen, setIsAuctionOpen] = useState(false);
   const [currentBid, setCurrentBid] = useState("0.00");
 
-  const bannerLines2 = [
-    "  /******   /******  /**   /**",
-    " /**__  ** /***_  **| **  / **",
-    "| **  \\ **| ****\\ **|  **/ **/",
-    "| ********| ** ** ** \\  ****/ ",
-    "| **__  **| **\\ ****  >**  ** ",
-    "| **  | **| ** \\ *** /**/\\  **",
-    "| **  | **|  ******/| **  \\ **",
-    "|__/  |__/ \\______/ |__/  |__/",
-  ];
-
-  const bannerLines3 = [
-"                                        /$$                     /$$   /$$ /$$$$$$$  /$$$$$$$$",
-"                                       |__/                    | $$  / $$| $$__  $$|__  $$__/",
-"       /$$  /$$$$$$   /$$$$$$$ /$$$$$$$ /$$  /$$$$$$$  /$$$$$$ |  $$/ $$/| $$    $$   | $$",   
-"      |__/ /$$__  $$ /$$_____//$$_____/| $$ /$$_____/ |____  $$    $$$$/ | $$$$$$$    | $$",   
-"       /$$| $$$$$$$$|  $$$$$$|  $$$$$$ | $$| $$        /$$$$$$$  >$$  $$ | $$__  $$   | $$",   
-"      | $$| $$_____/   _____ $$ ____ $$| $$| $$       /$$__  $$ /$$/   $$| $$    $$   | $$",   
-"      | $$|  $$$$$$$ /$$$$$$$//$$$$$$$/| $$|  $$$$$$$|  $$$$$$$| $$    $$| $$$$$$$/   | $$",   
-"      | $$|  _______/|_______/|_______/|__/  _______/  _______/|__/  |__/|_______/    |__/",   
-" /$$  | $$|",                                                                                   
-"|   $$$$$$/",                                                                                   
-"   ______/",                                                                                                                         
-];
 
 const bannerLines = [
-"                                             /$$   /$$ /$$$$$$$  /$$$$$$$$",
-"                                            | $$  / $$| $$__  $$|__  $$__/",
-" /$$$$$$/$$$$   /$$$$$$   /$$$$$$  /$$$$$$$ |  $$/ $$/| $$    $$   | $$   ",
-"| $$_  $$_  $$ /$$__  $$ /$$__  $$| $$__  $$    $$$$/ | $$$$$$$    | $$",   
-"| $$   $$   $$| $$    $$| $$    $$| $$    $$  >$$  $$ | $$__  $$   | $$",   
-"| $$ | $$ | $$| $$  | $$| $$  | $$| $$  | $$ /$$/   $$| $$    $$   | $$ ",  
-"| $$ | $$ | $$|  $$$$$$/|  $$$$$$/| $$  | $$| $$    $$| $$$$$$$/   | $$",   
-"|__/ |__/ |__/  ______/   ______/ |__/  |__/|__/  |__/|_______/    |__/",                                                                                                                         
+
+"       _                    _  __ ____ ______",
+"      (_)__  _____________ | |/ // __ )_  __/",
+"     / / _  / ___/ ___/ _  |   // __  |/ /   ",
+"    / /  __(__  |__  )  __/   |/ /_/ // /    ",
+" __/ / ___/____/____/ ___/_/|_/_____//_/      ",
+"/___/                                         ",                                                                                                                        
 ];   
                               
                               
@@ -113,18 +211,18 @@ const bannerLines = [
 
   const conversations = [
     {
-      username: "builder",
+      username: "jesseXBT",
       message:
-        "I will create a short video of your product and post it on X, Farcaster, Telegram, Tiktok and Instagram... ",
+        "Mi mission is to scale the number of builders that jessepollak can support from ~10-100 per day to ~1000+ per day, while delivering high quality support and increasing access to funding."
+       },
+    {
+    username: "jesseXBT",
+    message:
+    "You can chat with me on X, Farcaster and Telegram, and also find my publications on Zora.",
     },
     {
-    username: "agentbot",
-    message: "Everyday there's a new auction for tomorrow's video...",
-    },
-    {
-      username: "agentbot",
-      message:
-        "Training knowledge... Unique personality... Connecting to data sources... ",
+      username: "jesseXBT",
+      message: "I'm trained on jessepollak's writing, social media, videos and websites like base.org to have a deep knowledge base..."
     },
     {
     username: "agentbot",
@@ -269,6 +367,9 @@ const bannerLines = [
             }}
           />
 
+          {/* Bouncing Base Logo */}
+          <BouncingLogo />
+
           {/* Terminal content */}
           <div className="relative z-10">
             {lines.map((line, index) => (
@@ -306,7 +407,7 @@ const bannerLines = [
         <div className="hidden lg:block w-[400px] h-full relative">
           <video
             className="absolute inset-0 w-full h-full object-cover"
-            src="/assets/moonxbt.mp4"
+            src="/assets/jessexbt.mp4"
             autoPlay
             loop
             muted
@@ -332,100 +433,76 @@ const bannerLines = [
               </button>
             </div>
 
-            {/* Center - Bid Button */}
+            {/* Center - Mission Link */}
             <div className="order-first sm:order-none mb-4 sm:mb-0">
-              <button
-                onClick={handleBidVideo}
-                className="group relative overflow-hidden px-8 py-3 bg-gradient-to-r from-blue-600 to-blue-700 rounded-xl transform hover:scale-[1.02] transition-all duration-300"
+              <Link 
+                href="https://docs.google.com/document/d/1e1ok-cyJdm83ImQzlPshE8uDt4oci7uxaigGqqh_seA/edit?tab=t.0" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300"
               >
-                <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-all duration-300" />
-                <div className="relative flex items-center space-x-3">
-                  <span className="font-mono text-white font-bold tracking-wide whitespace-nowrap">BID FOR TOMORROW'S VIDEO</span>
-                  <div className="w-2 h-2 bg-white rounded-full animate-pulse" />
-                </div>
-              </button>
+                <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">MISSION</span>
+                <svg 
+                  className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
             </div>
 
-            {/* R ight - Social Links with modern hover effects */}
-            <div className="flex justify-center sm:justify-end items-center space-x-6">
-              <Link href="https://x.com/moonXBT_ai" target="_blank" rel="noopener noreferrer" className="group">
+            {/* Right - Social Links with modern hover effects */}
+            <div className="flex justify-center sm:justify-end items-center space-x-8">
+              <Link href="https://x.com/jessepollakxbt" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
                   <Image
                     src="/assets/x.png"
                     alt="X"
-                    width={20}
-                    height={20}
-                    className="opacity-70 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5"
+                    width={24}
+                    height={24}
+                    className="opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-125 group-hover:-translate-y-1"
                   />
-                  <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                  <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </div>
               </Link>
-              <Link href="https://warpcast.com/ai420z" target="_blank" rel="noopener noreferrer" className="group">
+              <Link href="https://warpcast.com/jessexbt" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
                   <Image
                     src="/assets/farcaster.png"
                     alt="Farcaster"
-                    width={20}
-                    height={20}
-                    className="opacity-70 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5"
+                    width={24}
+                    height={24}
+                    className="opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-125 group-hover:-translate-y-1"
                   />
-                  <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                  <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </div>
               </Link>
-              <Link href="https://www.tiktok.com/@moonxbt.fun" target="_blank" rel="noopener noreferrer" className="group">
+
+              <Link href="https://t.me/jessepollak_bot" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
-                  <FaTiktok className="w-5 h-5 text-white/70 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5" />
-                  <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                  <FaTelegram className="w-6 h-6 text-white/80 group-hover:text-white transition-all duration-300 transform group-hover:scale-125 group-hover:-translate-y-1" />
+                  <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </div>
               </Link>
-              <Link href="https://t.me/A0X_Portal" target="_blank" rel="noopener noreferrer" className="group">
-                <div className="relative">
-                  <FaTelegram className="w-5 h-5 text-white/70 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5" />
-                  <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                </div>
-              </Link>
-              <Link href="https://www.instagram.com/moonxbt_ia" target="_blank" rel="noopener noreferrer" className="group">
-                <div className="relative">
-                  <FaInstagram className="w-5 h-5 text-white/70 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5" />
-                  <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                </div>
-              </Link>
-              <Link href="https://zora.co/@moonxbt" target="_blank" rel="noopener noreferrer" className="group">
+  
+              <Link href="https://zora.co/@jessexbt" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
                   <Image
                     src="/assets/zora.png"
                     alt="Zora"
-                    width={20}
-                    height={20}
-                    className="opacity-70 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5"
+                    width={24}
+                    height={24}
+                    className="opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-125 group-hover:-translate-y-1"
                   />
-                  <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                </div>
-              </Link>
-              <Link href="https://dexscreener.com/base/0xa1a65c284a2e01f0d9c9683edeab30d0835d1362" target="_blank" rel="noopener noreferrer" className="group">
-                <div className="relative">
-                  <Image
-                    src="/assets/dexlogo.png"
-                    alt="Dex Screener"
-                    width={20}
-                    height={20}
-                    className="opacity-70 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-110 group-hover:-translate-y-0.5"
-                  />
-                  <div className="absolute -bottom-1 left-1/2 w-4 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
+                  <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
                 </div>
               </Link>
             </div>
           </div>
         </div>
       </div>
-
-      <VideoAuctionSheet 
-        isOpen={isAuctionOpen} 
-        onClose={() => {
-          console.log('Closing auction sheet...');
-          setIsAuctionOpen(false);
-        }} 
-      />
 
       <style jsx global>{`
         @keyframes scan {
