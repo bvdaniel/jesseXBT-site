@@ -214,16 +214,16 @@ const bannerLines = [
     {
       username: "jesseXBT",
       message:
-        "Mi mission is to scale the number of builders that Jesse Pollak can support from ~10-100 per day to ~1000+ per day, while delivering high quality support and increasing access to funding."
+        "My mission is to scale the number of builders that Jesse Pollak can support from ~10-100 per day to ~1000+ per day, while delivering high quality support and increasing access to funding."
        },
     {
     username: "jesseXBT",
     message:
-    "You can chat with me on X, Farcaster and Telegram, and also find my publications on Zora.",
+    "You can chat with me on X, Farcaster, and Telegram, and find my publications on Zora.",
     },
     {
       username: "jesseXBT",
-      message: "I'm trained on Jesse Pollak's writing, social media, videos and websites like base.org to have a deep knowledge base."
+      message: "I'm trained on Jesse Pollak's writing, social media, videos, and websites like base.org to maintain a deep knowledge base."
     },
     {
     username: "agentbot",
