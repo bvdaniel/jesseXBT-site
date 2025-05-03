@@ -1,0 +1,524 @@
+This is the documentation of Jesse XBT, an ai-agent with the mission to scale the number of builders that Jesse Pollak can support from ~10-100 per day to ~1000+ per day, while delivering high quality support and increasing access to funding.
+
+You can chat with Jesse XBT on X, Farcaster, and Telegram, and find his publications on Zora.
+
+JesseXBT is trained on Jesse Pollak's writing, social media, videos, and websites like base.org to maintain a deep knowledge base.
+
+Copy
+       _                    _  __ ____ ______
+      (_)__  _____________ | |/ // __ )_  __/
+     / / _  / ___/ ___/ _  |   // __  |/ /   
+    / /  __(__  |__  )  __/   |/ /_/ // /    
+ __/ / ___/____/____/ ___/_/|_/_____//_/      
+/___/
+
+Scaling Builder Support with a Digital Sidekick
+Welcome to the vision for jessexbt, a digital sidekick designed to empower builders at scale. The goal is to amplify support for builders from ~10–100 per day to ~1000+ per day, delivering high-quality guidance and increasing access to funding opportunities.
+
+🎯 Goal
+jessexbt is a digital agent that scales Jesse Pollak's ability to support builders, providing high-quality advice and facilitating funding access. It aims to:
+
+Support ~1000+ builders daily (up from ~10–100).
+
+Deliver high-quality, personalized support.
+
+Increase access to funding opportunities for builders.
+
+🚫 Non-Goals
+Launching a token associated with jessexbt.
+
+🛠️ Capabilities
+Agent Capabilities
+jessexbt is an intelligent, adaptive agent with the following features:
+
+Deep Knowledge Base:
+
+Trains on Jesse Pollak's writing and external resources like base.org.
+
+Continuously learns from real-time data, including  Jesse Pollak's Twitter and Farcaster feeds.
+
+Accessible Communication:
+
+Builders can interact with jessexbt via Telegram, X, and Farcaster.
+
+High-Quality Advice:
+
+Leverages its knowledge to provide actionable, tailored advice for builders.
+
+Talent Qualification:
+
+Identifies top 10% talent and facilitates 1:1 introductions to Jesse Pollak.
+
+Microgrant Facilitation:
+
+Qualifies builders and issues simple USDC microgrants on Base.
+
+Dashboard Capabilities
+The dashboard provides Jesse Pollak with tools to oversee and optimize jessexbt’s operations:
+
+Conversation Review:
+
+Review conversations with tagging and filtering capabilities.
+
+Provide feedback to improve agent performance.
+
+Microgrant Management:
+
+Review, approve, deny, or edit microgrant proposals.
+
+Knowledge Improvement:
+
+Suggests updates to the knowledge base, which Jesse Pollak can accept, deny, or edit.
+
+Analytics & Insights:
+
+Displays metrics and trends on conversations and builder interactions.
+
+📋 Requirements Summary
+Component
+
+Details
+
+Training Data
+
+ Jesse Pollak's writing, base.org, real-time Twitter/Farcaster feeds
+
+Access Channels
+
+Telegram, X, Farcaster
+
+Core Functions
+
+Advice, talent qualification, microgrants, 1:1 intros
+
+Dashboard Tools
+
+Conversation review, microgrant management, knowledge updates, analytics
+
+You can find the full requirements document live here.
+🌟 Why jessexbt?
+jessexbt isn’t just an agent—it’s a force multiplier for builders. By combining real-time learning, accessible communication, and funding facilitation, it empowers the next generation of innovators. Let’s build something extraordinary together.
+
+🔌
+Agent Training
+The training pipeline for jessexbt is designed to create a digital sidekick that embodies Jesse Pollak’s expertise, personality, and real-time insights, enabling it to support 1000+ builders daily with high-quality advice and funding facilitation. This page outlines the pre-training, fine-tuning, Retrieval-Augmented Generation (RAG), and feedback mechanisms that ensure jessexbt continuously improves and delivers effective responses.
+
+🎯 Training Goals
+The training process aims to:
+
+Capture Jesse’s Persona: Pre-train jessexbt to reflect Jesse Pollak’s tone, expertise, and approach using his public content.
+
+Stay Up-to-Date: Use RAG to integrate real-time knowledge from specified sources and ongoing interactions.
+
+Improve Daily: Leverage fine-tuning and Jesse’s feedback to enhance response quality over time.
+
+Scale Effectively: Ensure the agent can handle thousands of conversations across X, Farcaster, and Telegram with high accuracy.
+
+🧠 Training Pipeline
+The training pipeline for jessexbt consists of four interconnected components: Pre-Training, Fine-Tuning, Retrieval-Augmented Generation (RAG), and Feedback Loop, as illustrated in the diagram below.
+
+
+Pre-Training: Building Jesse’s Persona
+Objective: Create a foundational model that captures Jesse Pollak’s personality, expertise, and communication style.
+
+Data Sources:
+
+164 Videos & Podcasts from YouTube: Content from Jesse’s public appearances to understand his tone, insights, and areas of expertise (e.g., blockchain, Base, builder support).
+
+X Posts: Jesse’s historical posts on X to capture his written communication style and thought leadership.
+
+Farcaster Posts & Interactions: Jesse’s activity on Farcaster, including posts and conversations, to reflect his engagement with the Web3 community.
+
+Curation Process:
+
+Transcription: Convert videos and podcasts into text.
+
+Cleaning: Remove noise, irrelevant content, and duplicates from transcriptions and social media data.
+
+Synthetic Data Generation: Generate additional examples that align with Jesse’s style, based on the curated data.
+
+Model: A model is pre-trained on this curated dataset to establish jessexbt’s baseline personality and knowledge.
+
+Fine-Tuning: Aligning with Jesse’s Expertise
+Objective: Refine the pre-trained model to produce responses that are highly aligned with Jesse Pollak’s voice and expertise.
+
+Process:
+
+Initial Fine-Tuning: Fine-tune the model using the curated dataset (videos, X, Farcaster) to minimize deviations from Jesse’s style.
+
+Personalization: Incorporate Jesse’s personality settings from the Agent Dashboard, such as biography, communication style, and example responses.
+
+Example Responses: Use examples provided via the dashboard to guide jessexbt’s tone and approach (e.g., “When asked about funding, respond with optimism and practical advice, like Jesse would”).
+
+Model: The fine-tuned model becomes the core of jessexbt, capable of generating responses that reflect Jesse’s personality and expertise.
+
+Retrieval-Augmented Generation (RAG): Real-Time Knowledge
+
+Objective: Enhance jessexbt’s responses with up-to-date, contextual information from specified sources and ongoing interactions.
+
+Data Sources:
+
+Base.org Information: Static knowledge from base.org to provide accurate details about the Base ecosystem.
+
+Farcaster Account Data: Real-time posts and interactions to stay current with community trends.
+
+New Interactions & Feedback:
+
+Conversations on X, Farcaster, and Telegram to incorporate the latest builder queries and responses.
+
+Jesse’s feedback on responses to refine contextual understanding.
+
+RAG System:
+
+Vector Database: Store all knowledge sources (Base.org, social media posts, conversation logs) in a vector database for efficient retrieval.
+
+Retrieval: For each builder query, retrieve relevant information from the vector database.
+
+Generation: Combine retrieved information with the fine-tuned GPT model to generate contextually relevant, up-to-date responses.
+
+Benefit: Ensures jessexbt can answer questions with the latest insights (e.g., “What’s new on Base?”) while maintaining Jesse’s voice.
+
+Feedback Loop: Continuous Improvement
+
+You can like and dislike, rate and prompt an specific feedback to the repliesof the agent 
+Objective: Use Jesse’s evaluations to improve jessexbt’s response quality daily.
+
+Mechanism:
+
+Evaluation via Dashboard: Jesse reviews jessexbt’s responses in the Agent Dashboard, rating them for accuracy, relevance, and tone.
+
+Feedback Integration:
+
+Positive feedback reinforces good responses, adding them to the fine-tuning dataset.
+
+Negative feedback (e.g., “too generic” or “off-tone”) triggers model updates, prioritizing flagged responses for retraining.
+
+Iterative Fine-Tuning: The fine-tuned model is updated periodically with new conversation logs and feedback, improving performance over time.
+
+Benefit: Ensures jessexbt learns from real-world interactions, becoming more effective and aligned with Jesse’s expectations daily.
+
+📋 Training Requirements Summary
+Component
+
+Key Features
+
+Pre-Training
+
+164 YouTube videos/podcasts, X, Farcaster data; transcription, cleaning, synthetic data
+
+Fine-Tuning
+
+GPT model, Jesse’s personality settings, example responses, iterative updates
+
+RAG System
+
+Base.org, real-time X/Farcaster/Telegram data, vector database
+
+Feedback Loop
+
+Jesse’s evaluations via dashboard, response ratings, continuous fine-tuning
+
+🔗 Technical Integration
+The training pipeline aligns with jessexbt’s technical architecture:
+
+Model: Uses a GPT model for fine-tuning, as specified in the pipeline.
+
+Storage: Relies on a vector database for RAG, storing Base.org data, X/Farcaster posts, and conversation logs.
+
+Dashboard: Feedback and personality settings are provided via the Agent Dashboard, driving fine-tuning updates.
+
+Platforms: Integrates with X, Farcaster, and Telegram for real-time interactions and feedback.
+
+🌟 Why This Training Pipeline?
+This training pipeline ensures jessexbt is a true extension of Jesse Pollak, combining his persona with real-time knowledge and continuous improvement. By leveraging pre-training, fine-tuning, RAG, and feedback, jessexbt delivers accurate, relevant, and actionable responses that empower builders at scale. The iterative design means the agent gets better every day, aligning with the mission to support 1000+ builders daily with high-quality guidance and funding access
+
+📋
+Agent Dashboard
+The Agent Dashboard is the central hub for managing jessexbt, your digital sidekick. It provides a powerful, intuitive interface to configure the agent’s behavior, monitor its interactions, and optimize its knowledge base. Think of it as a mission control center that empowers you to scale support for 1000+ builders daily while maintaining high-quality engagement and funding facilitation.
+
+🎯 What is the Agent Dashboard?
+The dashboard is a web-based interface that allows you to:
+
+Configure jessexbt’s knowledge, personality, and communication style.
+
+Monitor and manage interactions across Telegram, X, and Farcaster.
+
+Review and approve microgrant proposals on Base.
+
+Analyze conversation analytics and suggest knowledge improvements.
+
+It’s designed to be user-friendly, visually appealing, and responsive, ensuring you can oversee jessexbt’s operations efficiently from any device.
+
+🔑 Accessing the Dashboard
+To access the dashboard, you must verify ownership of jessexbt. Supported authentication methods include:
+
+Digital Wallet: Use the wallet (e.g., MetaMask) linked to the agent’s creation on Base.
+
+X Account: Authenticate via your X account if connected to jessexbt.
+
+Farcaster Account: Log in with your Farcaster account if linked.
+
+Security Note: Unauthorized access attempts will display an “Access Denied” message, ensuring only you can manage the agent.
+
+🛠️ Dashboard Features
+The dashboard is organized into key sections, each designed to streamline management of jessexbt:
+
+General Information
+Overview:
+
+Displays jessexbt’s name, profile image, and description.
+
+Shows remaining “energy” (operational lifespan, e.g., based on subscription or compute limits).
+
+Use Case: Quickly confirm the agent’s status and identity.
+
+
+Knowledge Management
+Knowledge Graph:
+
+Visualizes all data sources jessexbt has ingested, including:
+
+Websites (e.g., base.org).
+
+Documents (e.g., your writing).
+
+Real-time feeds (e.g., Twitter, Farcaster).
+
+Shows the status of each source (e.g., “Active,” “Updating,” “Error”).
+
+Actions:
+
+Add or remove data sources.
+
+Review suggested knowledge updates and accept, deny, or edit them.
+
+Use Case: Ensure jessexbt’s knowledge is current and relevant.
+
+
+Social Connections
+Platforms:
+
+X:
+
+Connect/disconnect jessexbt to your X account.
+
+Review past conversations with builders.
+
+Schedule tweets or automated responses.
+
+Farcaster:
+
+Link to your Farcaster account.
+
+Monitor conversations and interactions.
+
+Program automated posts or frames.
+
+Telegram:
+
+Configure jessexbt as a Telegram bot.
+
+View chat histories with builders.
+
+Set up automated replies or commands (e.g., “/apply” for microgrants).
+
+Use Case: Manage jessexbt’s presence across platforms and ensure seamless builder interactions.
+
+
+Networks, automations and feedback of conversations on jesseXBT
+Microgrant Management
+Features:
+
+View all microgrant proposals with status (Pending/Approved/Denied).
+
+Review proposal details and approve, deny, or edit USDC amounts on Base.
+
+Bulk process multiple proposals for efficiency.
+
+Integration: Connects to Base smart contracts for secure transactions.
+
+Use Case: Streamline funding decisions for builders.
+
+See more in Grants Dashboard
+
+Agent Personality
+
+Image of character personalization feature of Jesse XBT based on Eliza OS
+Customization:
+
+Edit jessexbt’s biography, background, and communication style.
+
+Define expertise areas (e.g., blockchain, startup growth).
+
+Provide example responses to guide the agent’s tone and approach.
+
+Impact: Changes are applied instantly, shaping how jessexbt interacts with builders.
+
+Use Case: Align jessexbt with your voice and expertise for authentic, effective responses.
+
+Analytics & Insights
+Metrics:
+
+Conversation volume, response times, and builder engagement.
+
+Top conversation topics and microgrant trends.
+
+Visualizations:
+
+Charts (e.g., line graphs for daily interactions, pie charts for topic distribution).
+
+Use Case: Gain insights to optimize jessexbt’s performance.
+
+📋 Step-by-Step Processes
+Connecting to a Social Platform
+Navigate to the Social Connections section.
+
+Select the platform tab (X, Farcaster, or Telegram).
+
+Click “Connect” and authenticate with your account.
+
+Authorize the connection.
+
+Verify jessexbt is active on the platform.
+
+Modifying Agent Personality
+Go to the Agent Personality section.
+
+Update fields (biography, style, expertise, example responses).
+
+Click “Save Changes.”
+
+Test the updated personality via a sample interaction.
+
+Scheduling Posts
+Access the Social Connections tab for X or Farcaster.
+
+Locate the “Scheduled Posts” section.
+
+Create a new post, set the date and time, and save.
+
+Monitor scheduled posts for confirmation.
+
+Reviewing Microgrants
+Open the Microgrant Management section.
+
+Filter proposals by status or date.
+
+Review details and select Approve, Deny, or Edit.
+
+Confirm actions to update Base transactions.
+
+🎨 Visual Design
+The dashboard features a modern, user-friendly design:
+
+Color Scheme: Soft gradient background (white to light blue) for a clean aesthetic.
+
+Layout: White cards for each section (General, Knowledge, Social, etc.) with clear borders.
+
+Icons: Platform-specific icons (e.g., X logo, Telegram symbol) for quick recognition.
+
+Status Indicators: Green for connected/active, red for errors, yellow for pending.
+
+Responsive: Fully functional on desktop and mobile, built with frameworks like Tailwind CSS.
+
+🔗 Technical Integration
+The dashboard integrates with jessexbt’s technical architecture:
+
+Frontend: Built with React.js and Tailwind CSS, using Chart.js for analytics visualizations.
+
+Backend: Connects to Node.js/FastAPI APIs for data retrieval and updates.
+
+Authentication: Supports wallet-based (Web3.js), X, and Farcaster logins via OAuth or API tokens.
+
+Data: Pulls from PostgreSQL (conversations, microgrants) and vector DB (knowledge base).
+
+Blockchain: Interfaces with Base smart contracts for microgrant transactions.
+
+Real-Time Updates: Uses WebSockets for live knowledge and conversation updates.
+
+📋 Dashboard Requirements Summary
+Component
+
+Key Features
+
+Access
+
+Wallet, X, Farcaster authentication; “Access Denied” for unauthorized users
+
+Sections
+
+General info, knowledge graph, social connections, microgrants, personality, analytics
+
+Actions
+
+Connect platforms, schedule posts, review microgrants, customize personality
+
+Design
+
+Gradient background, white cards, platform icons, status colors, responsive
+
+🌟 Why This Dashboard?
+The Agent Dashboard empowers you to manage jessexbt with precision, ensuring it delivers high-quality support to builders at scale. Its intuitive design, robust features, and seamless integrations make it the backbone of jessexbt’s mission to empower 1000+ builders daily. Let’s build a control center that drives innovation.
+
+🔵
+Grants Dashboard
+How the Grant System Works on Base Network
+Step-by-step guide to the grant management process on Base
+
+
+Diagram of the complete grant process flow on Base network
+
+📩 1. Request Reception
+The process begins when a contributor sends a grant request through the system. The message includes information about their contribution to the project and relevant data such as the GitHub repository. (Eg: "@JesseXBT check my project https://github.com/a0x-company/JesseXBT ")
+
+🔍 2. Repository Scraping
+The autonomous agent scans the GitHub repository mentioned in the request. During this process:
+
+Analyzes the commits and contributions of the applicant
+
+Verifies the authenticity of the contribution
+
+Collects code quality metrics
+
+Evaluates the impact of the contribution on the project
+
+Critically assesses associated websites and online presence
+
+🔬 3. Request Evaluation
+Once the information is collected, the supervisor can review:
+
+Repository details and contribution
+
+Code quality metrics collected by the agent
+
+Social activity and interactions of the contributor
+
+History of previous contributions
+
+Website and online presence assessment
+
+Based on this information, they can approve or deny the request using the corresponding buttons in the interface.
+
+💼 4. Wallet Management
+The system automatically obtains the wallet address of the applicant that will be used to send the grant. This information is displayed in the interface for verification.
+
+For messages sent via Farcaster, the system automatically detects and retrieves the associated wallet address
+
+This integration streamlines the process and ensures accurate wallet information
+
+The supervisor can verify the wallet before proceeding with the grant
+
+💸 5. Grant Sending
+Currently, grants are sent manually through the Base network:
+
+The supervisor verifies there is sufficient USDC balance in the wallet on Base
+
+Adjusts the grant amount if necessary
+
+Initiates the transaction using the "Send Grant" button
+
+Confirms that the transaction has been completed successfully on the Base blockchain
+
+Once the transaction is complete, the grant status changes to "Paid" and the USDC balance in the account is updated.
+
+Note: This process is continuously being optimized. In the future, we plan to integrate with Talent Protocol to validate wallets and builder scores, automate grant disbursements on Base, and enhance the ability to critically evaluate not just GitHub repositories but associated websites and online presence as well. The data gathering process is also being optimized to include other sources for validation like socials, demos, documentation, and so on.
