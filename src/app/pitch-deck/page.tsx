@@ -7,6 +7,7 @@ import "reveal.js/dist/theme/black.css";
 import "./pitch-deck.css";
 import Link from "next/link";
 import { BouncingLogo } from "@/components/TerminalHero";
+import Image from "next/image";
 
 export default function PitchDeck() {
   const [showLogo, setShowLogo] = useState(true);
@@ -94,6 +95,33 @@ export default function PitchDeck() {
           <BouncingLogo />
         </div>
       )}
+
+      {/* a0x watermark - bottom left, clickable, semi-transparent */}
+      <a
+        href="https://a0x.co"
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{
+          position: 'fixed',
+          left: 24,
+          bottom: 24,
+          zIndex: 1001,
+          opacity: 0.18,
+          transition: 'opacity 0.2s',
+        }}
+        onMouseOver={e => { e.currentTarget.style.opacity = '0.38'; }}
+        onMouseOut={e => { e.currentTarget.style.opacity = '0.18'; }}
+        tabIndex={-1}
+        aria-label="a0x.co"
+      >
+        <img
+          src="/assets/a0x-logo.png"
+          alt="a0x.co logo watermark"
+          width={80}
+          height={80}
+          style={{ display: 'block', pointerEvents: 'auto' }}
+        />
+      </a>
 
       <div className="slides">
         {/* Title Slide */}
