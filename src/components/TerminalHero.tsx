@@ -80,8 +80,8 @@ const TypeWriter = ({
   );
 };
 
-const BouncingLogo = () => {
-  const [position, setPosition] = useState({ x: 0, y: 0 });
+const BouncingLogo = ({ initialX = 0, initialY = 0, randomSeed = 0 }: { initialX?: number; initialY?: number; randomSeed?: number }) => {
+  const [position, setPosition] = useState({ x: initialX, y: initialY });
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const logoRef = useRef<HTMLDivElement>(null);
@@ -106,9 +106,10 @@ const BouncingLogo = () => {
         const dy = mousePosition.y - logoCenterY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Add floating motion
-        const floatX = Math.sin(Date.now() / 2000) * 2;
-        const floatY = Math.cos(Date.now() / 1500) * 2;
+        // Add floating motion with random seed
+        const now = Date.now();
+        const floatX = Math.sin((now + randomSeed * 1000) / (1800 + randomSeed * 300)) * (2 + (randomSeed % 2));
+        const floatY = Math.cos((now + randomSeed * 2000) / (1300 + randomSeed * 200)) * (2 + ((randomSeed + 1) % 2));
 
         // Calculate new position with mouse repulsion and floating
         let newX = prev.x + floatX;
@@ -147,7 +148,7 @@ const BouncingLogo = () => {
       container.removeEventListener('mousemove', handleMouseMove);
       cancelAnimationFrame(animationFrameId);
     };
-  }, [mousePosition]);
+  }, [mousePosition, randomSeed]);
 
   return (
     <div 
