@@ -71,7 +71,7 @@ export default function PitchDeck() {
   return (
     <div className="reveal">
       {/* Home Button */}
-      <div style={{ position: 'absolute', top: 10, right: 16, zIndex: 1000 }}>
+      <div className="pitchdeck-home-btn" style={{ position: 'absolute', top: 10, right: 16, zIndex: 1000 }}>
         <Link href="/" legacyBehavior>
           <a style={{
             display: 'inline-block',
@@ -192,15 +192,36 @@ export default function PitchDeck() {
 
         {/* How JesseXBT Works */}
         <section>
-          <h2>How JesseXBT Works</h2>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '2em', width: '90vw', maxWidth: '1500px', margin: '0 auto', minHeight: '420px' }}>
-            <ul style={{ fontSize: '1em', flex: 1, minWidth: 0, maxWidth: '48%' }}>
-              <li className="fragment fade-in">Pre-training on Jesse's persona & expertise</li>
-              <li className="fragment fade-in">Fine-tuning with dashboard feedback</li>
-              <li className="fragment fade-in">Retrieval-Augmented Generation (RAG) for real-time knowledge</li>
-              <li className="fragment fade-in">Continuous improvement via feedback loop</li>
-            </ul>
-            <div style={{ flex: 1, minWidth: 0, maxWidth: '52%', display: 'flex', justifyContent: 'center' }}>
+          <div
+            className="how-jessexbt-works-slide"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '2em',
+              width: '90vw',
+              maxWidth: '1500px',
+              margin: '0 auto',
+              minHeight: '420px',
+              flexDirection: 'row',
+            }}
+          >
+            <div
+              className="how-jessexbt-works-text"
+              style={{ fontSize: '1em', flex: 1, minWidth: 0, maxWidth: '48%' }}
+            >
+              <h2 style={{ textAlign: 'left', marginBottom: '0.7em' }}>How JesseXBT Works</h2>
+              <ul>
+                <li className="fragment fade-in">Pre-training on Jesse's persona & expertise</li>
+                <li className="fragment fade-in">Fine-tuning with dashboard feedback</li>
+                <li className="fragment fade-in">Retrieval-Augmented Generation (RAG) for real-time knowledge</li>
+                <li className="fragment fade-in">Continuous improvement via feedback loop</li>
+              </ul>
+            </div>
+            <div
+              className="how-jessexbt-works-image"
+              style={{ flex: 1, minWidth: 0, maxWidth: '52%', display: 'flex', justifyContent: 'center' }}
+            >
               <img
                 src="/assets/fine tuning jesse.webp"
                 alt="Fine tuning Jesse"
@@ -212,8 +233,24 @@ export default function PitchDeck() {
 
         {/* Dashboard & Feedback */}
         <section>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3em', width: '90vw', maxWidth: '1500px', margin: '0 auto', minHeight: '420px' }}>
-            <div style={{ flex: 1, minWidth: 0, maxWidth: '48%' }}>
+          <div
+            className="dashboard-feedback-slide"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '3em',
+              width: '90vw',
+              maxWidth: '1500px',
+              margin: '0 auto',
+              minHeight: '420px',
+              flexDirection: 'row',
+            }}
+          >
+            <div
+              className="dashboard-feedback-text"
+              style={{ flex: 1, minWidth: 0, maxWidth: '48%' }}
+            >
               <h2 style={{ textAlign: 'left', marginBottom: '0.7em' }}>Dashboard & Feedback</h2>
               <ul style={{ fontSize: '1em', textAlign: 'left' }}>
                 <li className="fragment fade-in">Review and improve agent responses</li>
@@ -221,7 +258,10 @@ export default function PitchDeck() {
                 <li className="fragment fade-in">Analytics and insights for continuous growth</li>
               </ul>
             </div>
-            <div style={{ flex: 1, minWidth: 0, maxWidth: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <div
+              className="dashboard-feedback-carousel"
+              style={{ flex: 1, minWidth: 0, maxWidth: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+            >
               <DashboardCarousel />
             </div>
           </div>
@@ -292,9 +332,21 @@ function DashboardCarousel() {
   ];
   const [index, setIndex] = useState(0);
   const [fade, setFade] = useState(true);
+  const [isMobile, setIsMobile] = useState(false);
 
-  // Auto-advance every 3 seconds
-  React.useEffect(() => {
+  // Detect mobile
+  useEffect(() => {
+    function handleResize() {
+      setIsMobile(window.innerWidth <= 900);
+    }
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  // Carousel logic (always call, but skip if mobile)
+  useEffect(() => {
+    if (isMobile) return;
     const timer = setInterval(() => {
       setFade(false);
       setTimeout(() => {
@@ -303,9 +355,8 @@ function DashboardCarousel() {
       }, 250);
     }, 5000);
     return () => clearInterval(timer);
-  }, [images.length]);
+  }, [images.length, isMobile]);
 
-  // Manual navigation handler
   const handleDotClick = (i: number) => {
     if (i === index) return;
     setFade(false);
@@ -315,8 +366,13 @@ function DashboardCarousel() {
     }, 250);
   };
 
+  // Only render carousel on desktop
+  if (isMobile) {
+    return null;
+  }
+
   return (
-    <div style={{ background: '#fff', borderRadius: '20px', boxShadow: '0 8px 32px rgba(23,82,240,0.10)', padding: 0, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '640px', height: '520px', justifyContent: 'flex-start', overflow: 'hidden' }}>
+    <div className="dashboard-card">
       <div style={{ width: '100%', height: '400px', display: 'flex', alignItems: 'center', justifyContent: 'center', paddingTop: '2em' }}>
         <img
           src={images[index].src}
