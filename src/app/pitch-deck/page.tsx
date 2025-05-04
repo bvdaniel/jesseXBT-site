@@ -177,7 +177,7 @@ export default function PitchDeck() {
             <div style={{ flex: 1, minWidth: 0, maxWidth: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ background: '#fff', borderRadius: '20px', boxShadow: '0 8px 32px rgba(23,82,240,0.10)', padding: '1.5em', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '380px' }}>
                 <video
-                  src="/assets/jessexbt-idea.mp4"
+                  src="/assets/jesseXBT-idea.mp4"
                   autoPlay
                   loop
                   muted
