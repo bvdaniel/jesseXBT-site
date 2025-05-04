@@ -240,6 +240,17 @@ export default function PitchDeck() {
           </div>
         </section>
 
+           {/* Vision for the Future */}
+           <section>
+          <h2>Vision for the Future</h2>
+          <ul style={{ fontSize: '1em' }}>
+            <li className="fragment fade-in">Increased awareness of crypto, tech, and Base developments</li>
+            <li className="fragment fade-in">Sharper answers to provide the best feedback</li>
+            <li className="fragment fade-in">Ability to test products directly</li>
+            <li className="fragment fade-in">Analyze more context for deeper insights</li>
+          </ul>
+        </section>
+
         {/* Why Now: Base Batches Context */}
         <section>
           <h2>Why Now?</h2>
@@ -265,6 +276,8 @@ export default function PitchDeck() {
             </li>
           </ul>
         </section>
+
+     
       </div>
     </div>
   );
