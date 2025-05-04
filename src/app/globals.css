@@ -87,3 +87,33 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.reveal .slides button[aria-label^="Show"] {
+  background: #b6d0fa;
+  border: none;
+  appearance: none;
+  box-shadow: none;
+  outline: none;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin: 0 2px;
+  padding: 0;
+  cursor: pointer;
+}
+.reveal .slides button[aria-label^="Show"]:focus {
+  outline: none;
+}
+
+.reveal .slides .dashboard-card {
+  width: 640px;
+  height: 520px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(23,82,240,0.10);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
