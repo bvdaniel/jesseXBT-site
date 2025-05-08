@@ -206,6 +206,85 @@ html, body, .reveal, .reveal .slides, .reveal .backgrounds {
   .how-jessexbt-works-image {
     display: none !important;
   }
+
+  .roadmap-timeline {
+    gap: 1.2em !important;
+  }
+  .timeline-phase {
+    min-width: 80px;
+  }
+  .phase-title {
+    font-size: 0.95em;
+    padding: 0.3em 0.7em;
+  }
+  .timeline-arrow {
+    font-size: 1.3em;
+  }
+  .phase-subtitle {
+    max-width: 110px !important;
+    font-size: 0.85em !important;
+  }
+  .reveal .slides .border-r-2,
+  .reveal .slides .border-l-2 {
+    border-right: none !important;
+    border-left: none !important;
+  }
+  .solution-flex {
+    flex-direction: column !important;
+    gap: 2em !important;
+    min-height: unset !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+    align-items: stretch !important;
+    justify-content: flex-start !important;
+    padding: 0 8px;
+  }
+  .solution-card {
+    width: 100% !important;
+    min-width: 260px !important;
+    max-width: 500px !important;
+    border-radius: 12px !important;
+    margin: 2.5em 0 0.1em 0 !important;
+    box-sizing: border-box;
+    align-self: center;
+    word-break: break-word;
+    white-space: normal;
+  }
+  .solution-card ul, .solution-card li {
+    word-break: break-word;
+    white-space: normal;
+    overflow-wrap: break-word;
+  }
+  .solution-image-col {
+    width: 100% !important;
+    max-width: 100vw !important;
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    margin-bottom: 1.5em;
+  }
+  .solution-title-mobile { display: block !important; }
+  .solution-title-desktop { display: none !important; }
+  .phase-card {
+    min-width: 92vw !important;
+    max-width: 98vw !important;
+    width: 98vw !important;
+    margin: 0.6em auto !important;
+    padding: 1em 0.7em !important;
+    border-radius: 14px !important;
+    font-size: 1em !important;
+    box-sizing: border-box;
+  }
+  .phase-desc {
+    font-size: 1em !important;
+    max-width: 95vw !important;
+    margin: 0.4em 0 0.2em 0 !important;
+  }
+  .flex.flex-row.flex-wrap.justify-center.items-start.gap-x-1.gap-y-3.w-full {
+    flex-direction: column !important;
+    gap: 0.2em !important;
+    align-items: center !important;
+  }
 }
 
 @media (max-width: 600px) {
@@ -236,5 +315,292 @@ html, body, .reveal, .reveal .slides, .reveal .backgrounds {
     max-width: 95vw !important;
     height: auto !important;
     border-radius: 10px !important;
+  }
+}
+
+.roadmap-timeline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3.2em;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+  flex-wrap: wrap;
+}
+.timeline-phase {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 110px;
+}
+.phase-title {
+  font-weight: bold;
+  font-size: 1.1em;
+  padding: 0.4em 1.1em;
+  border-radius: 12px;
+  margin-bottom: 0.3em;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
+.phase-label {
+  font-size: 0.95em;
+  color: #fff;
+  margin-bottom: 0.1em;
+  text-align: center;
+}
+.timeline-arrow {
+  font-size: 2.2em;
+  color: #fff;
+  opacity: 0.5;
+  margin: 0 0.2em;
+}
+.phase-subtitle {
+  font-size: 0.72em !important;
+  color: #eaeaea !important;
+  font-weight: 400 !important;
+  text-align: center !important;
+  max-width: 150px !important;
+  margin: 0.3em auto 0 auto !important;
+  line-height: 1.3 !important;
+  word-break: break-word;
+}
+
+@keyframes impact-underline {
+  0% { opacity: 0.7; width: 60px; }
+  100% { opacity: 1; width: 90px; }
+}
+
+.impact-points {
+  display: flex;
+  gap: 2.5em;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  margin-top: 1.2em;
+}
+@media (max-width: 700px) {
+  .impact-points {
+    flex-direction: column !important;
+    gap: 1.2em !important;
+    align-items: center !important;
+  }
+}
+
+.roadmap-timeline-2row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5em;
+  width: 100%;
+}
+.roadmap-row {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 1em;
+}
+.phase-card {
+  min-width: 10px;
+  max-width: 20px;
+  padding: 0.01em 0.01em 0.01em 0.01em;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(23,82,240,0.10);
+  text-align: center;
+  color: #181A20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--phase-bg, #fff);
+  overflow: hidden;
+}
+.phase-card .phase-title {
+  font-weight: 200;
+  font-size: 0.95em;
+  margin-bottom: 0.08em;
+  letter-spacing: 0.01em;
+  color: #181A20;
+}
+.phase-card .phase-label {
+  font-size: 0.85em;
+  margin-bottom: 0.08em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #181A20;
+}
+.phase-card .phase-subtitle {
+  font-size: 1.95em;
+  color: #181A20;
+  line-height: 1;
+  margin-top: 0.12em;
+  margin-bottom: 0.08em;
+  font-weight: 500;
+  word-break: break-word;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+  display: block;
+}
+.timeline-arrow {
+  font-size: 2em;
+  color: #fff;
+  opacity: 0.5;
+  margin: 0 0.2em;
+  align-self: center;
+}
+@media (max-width: 900px) {
+  .roadmap-row {
+    gap: 0.5em;
+    flex-wrap: wrap;
+  }
+  .roadmap-timeline-2row {
+    gap: 0.7em;
+  }
+  .phase-card {
+    min-width: 85vw;
+    max-width: 95vw;
+  }
+  .timeline-arrow {
+    font-size: 1.2em;
+  }
+}
+
+.roadmap-timeline-horizontal {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 0.7em;
+  width: 100%;
+  flex-wrap: nowrap;
+}
+.roadmap-phase-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 210px;
+  height: 210px;
+}
+.phase-card {
+  min-width: 150px;
+  max-width: 170px;
+  min-height: 90px;
+  padding: 0.6em 0.7em 0.6em 0.7em;
+  border-radius: 14px;
+  box-shadow: 0 2px 8px rgba(23,82,240,0.10);
+  text-align: center;
+  color: #181A20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--phase-bg, #fff);
+  overflow: hidden;
+}
+.phase-card .phase-title {
+  font-weight: 800;
+  font-size: 0.85em;
+  margin-bottom: 0.06em;
+  letter-spacing: 0.01em;
+  color: #181A20;
+}
+.phase-card .phase-label {
+  font-size: 0.78em;
+  margin-bottom: 0.06em;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #181A20;
+}
+.phase-card .phase-subtitle {
+  font-size: 0.68em;
+  color: #181A20;
+  line-height: 1.2;
+  max-width: 140px;
+  margin-top: 0.06em;
+  margin-bottom: 0.03em;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.timeline-arrow {
+  font-size: 1.2em;
+  color: #fff;
+  opacity: 0.5;
+  margin: 0 0.1em;
+  align-self: center;
+}
+@media (max-width: 900px) {
+  .roadmap-timeline-horizontal {
+    gap: 0.3em;
+  }
+  .phase-card {
+    min-width: 17vw;
+    max-width: 19vw;
+    padding: 0.4em 0.2em 0.4em 0.2em;
+  }
+  .phase-card .phase-title,
+  .phase-card .phase-label,
+  .phase-card .phase-subtitle {
+    font-size: 0.7em;
+  }
+}
+
+.phase-desc {
+  font-size: 1em;
+  color: #181A20;
+  font-weight: 500;
+  margin-top: 0.3em;
+  margin-bottom: 0.1em;
+  text-align: center;
+  max-width: 220px;
+  line-height: 1.3;
+}
+
+.frosted-card {
+  background: rgba(255, 255, 255, 0.13);
+  border-radius: 18px;
+  box-shadow: 0 4px 32px rgba(23,82,240,0.10);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 1.5em 1.2em;
+  margin: 1.2em 0;
+}
+
+.solution-title-mobile { display: none; }
+.solution-title-desktop { display: block; }
+@media (max-width: 900px) {
+  .solution-title-mobile { display: block !important; }
+  .solution-title-desktop { display: none !important; }
+}
+
+@media (min-width: 901px) {
+  .phase-card {
+    min-width: 140px;
+    max-width: 170px;
+    min-height: 90px;
+    padding: 0.7em 0.5em;
+    border-radius: 16px;
+    font-size: 1em;
+  }
+  .phase-card .phase-title {
+    font-size: 1.1em;
+    margin-bottom: 0.18em;
+  }
+  .phase-card .phase-label {
+    font-size: 0.95em;
+    margin-bottom: 0.12em;
+  }
+  .phase-card .phase-subtitle {
+    font-size: 0.95em;
+    margin-top: 0.12em;
+    margin-bottom: 0.08em;
+  }
+  .roadmap-timeline, .roadmap-timeline-horizontal, .roadmap-row {
+    margin-top: 2em !important;
+    margin-bottom: 2em !important;
+    gap: 1.2em !important;
   }
 } 

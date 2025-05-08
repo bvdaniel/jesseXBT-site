@@ -11,6 +11,9 @@ import Image from "next/image";
 import KnowledgeGraphAnimation from "./KnowledgeGraphAnimation";
 import React from "react";
 import { motion } from "framer-motion";
+import { FaCheckCircle, FaLightbulb, FaUsers } from 'react-icons/fa';
+import { MdSpeed } from 'react-icons/md';
+import { HiLightBulb, HiUserGroup } from 'react-icons/hi';
 
 export default function PitchDeck() {
   const [showLogo, setShowLogo] = useState(true);
@@ -125,8 +128,8 @@ export default function PitchDeck() {
         <img
           src="/assets/a0x-logo.png"
           alt="a0x.co logo watermark"
-          width={80}
-          height={80}
+          width={60}
+          height={60}
           style={{ display: 'block', pointerEvents: 'auto' }}
         />
       </a>
@@ -142,39 +145,79 @@ export default function PitchDeck() {
 
         {/* The Problem */}
         <section>
-          <h2>The Problem</h2>
-          <ul style={{ fontSize: '1em' }}>
-            <li className="fragment fade-in">Builder support doesn't scale — too many requests, not enough time</li>
-            <li className="fragment fade-in">Missed opportunities for high-potential builders</li>
-            <li className="fragment fade-in">Funding and advice bottlenecked by human bandwidth</li>
-            <li className="fragment fade-in">Community growth limited by 1:1 interactions</li>
-          </ul>
+          <h2 style={{ 
+            fontSize: '2.2em', 
+            marginBottom: '0.8em',
+            background: 'linear-gradient(90deg, #fff 60%, #1752F0 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            filter: 'drop-shadow(0 0 18px rgba(255,255,255,0.3))'
+          }}>
+            The Problem
+          </h2>
+          <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card">
+            <ul style={{ fontSize: '1.1em', maxWidth: '800px', margin: '0 auto' }}>
+              <li className="fragment fade-in" style={{ marginBottom: '1em' }}>
+                <span style={{ color: '#8ecaff', fontWeight: 600 }}>Scale:</span> Builder support doesn't scale — too many requests, not enough time
+              </li>
+              <li className="fragment fade-in" style={{ marginBottom: '1em' }}>
+                <span style={{ color: '#8ecaff', fontWeight: 600 }}>Opportunity:</span> High-potential builders fall through the cracks
+              </li>
+              <li className="fragment fade-in" style={{ marginBottom: '1em' }}>
+                <span style={{ color: '#8ecaff', fontWeight: 600 }}>Bottleneck:</span> Funding and advice limited by human bandwidth
+              </li>
+              <li className="fragment fade-in" style={{ marginBottom: '1em' }}>
+                <span style={{ color: '#8ecaff', fontWeight: 600 }}>Growth:</span> Community expansion capped by 1:1 interactions
+              </li>
+            </ul>
+          </div>
         </section>
 
         {/* Our Vision */}
         <section>
-          <h2>Our Vision</h2>
-          <ul style={{ fontSize: '1em' }}>
-            <li className="fragment fade-in">What if every builder could get Jesse's help, instantly?</li>
-            <li className="fragment fade-in">Personal, high-quality support for 1000+ builders daily</li>
-            <li className="fragment fade-in">Faster access to funding and resources</li>
-            <li className="fragment fade-in">A thriving, global onchain builder community</li>
-          </ul>
+          <h2 style={{ 
+            fontSize: '2.2em', 
+            marginBottom: '0.8em',
+            background: 'linear-gradient(90deg, #fff 60%, #1752F0 100%)',
+            WebkitBackgroundClip: 'text',
+            WebkitTextFillColor: 'transparent',
+            filter: 'drop-shadow(0 0 18px rgba(255,255,255,0.3))'
+          }}>
+            The Vision
+          </h2>
+          <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card">
+            <ul style={{ fontSize: '1.1em', maxWidth: '800px', margin: '0 auto' }}>
+              <li className="fragment fade-in" style={{ marginBottom: '1em' }}>
+                <span style={{ color: '#8ecaff', fontWeight: 600 }}>Instant Access:</span> Every builder gets Jesse's expertise, 24/7
+              </li>
+              <li className="fragment fade-in" style={{ marginBottom: '1em' }}>
+                <span style={{ color: '#8ecaff', fontWeight: 600 }}>Mass Scale:</span> Personal, high-quality support for 1000+ builders daily
+              </li>
+              <li className="fragment fade-in" style={{ marginBottom: '1em' }}>
+                <span style={{ color: '#8ecaff', fontWeight: 600 }}>Accelerated Growth:</span> Faster access to funding and resources
+              </li>
+              <li className="fragment fade-in" style={{ marginBottom: '1em' }}>
+                <span style={{ color: '#8ecaff', fontWeight: 600 }}>Global Impact:</span> Democratizing builder support worldwide
+              </li>
+            </ul>
+          </div>
         </section>
 
         {/* The Solution: JesseXBT */}
         <section>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3em', width: '90vw', maxWidth: '1500px', margin: '0 auto', minHeight: '420px' }}>
+          <div className="solution-flex" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '3em', width: '90vw', maxWidth: '1500px', margin: '0 auto', minHeight: '420px' }}>
             <div style={{ flex: 1, minWidth: 0, maxWidth: '48%' }}>
-              <h2 style={{ textAlign: 'left', marginBottom: '0.7em' }}>The Solution: JesseXBT</h2>
-              <ul style={{ fontSize: '1em', textAlign: 'left' }}>
-                <li className="fragment fade-in">AI-powered digital sidekick for builders</li>
-                <li className="fragment fade-in">Trained on Jesse's writing, social, and video content</li>
-                <li className="fragment fade-in">Delivers advice, talent qualification, and microgrants</li>
-                <li className="fragment fade-in">Accessible via X, Farcaster and Telegram.</li>
-              </ul>
+              <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card solution-card">
+                <h2 style={{ textAlign: 'left', marginBottom: '0.7em', fontSize: '1.3em', fontWeight: 800 }}>The Solution: JesseXBT</h2>
+                <ul style={{ fontSize: '1em', textAlign: 'left' }}>
+                  <li className="fragment fade-in">AI-powered digital sidekick for builders</li>
+                  <li className="fragment fade-in">Trained on Jesse's writing, social, and video content</li>
+                  <li className="fragment fade-in">Delivers advice, talent qualification, and microgrants</li>
+                  <li className="fragment fade-in">Accessible via X, Farcaster and Telegram.</li>
+                </ul>
+              </div>
             </div>
-            <div style={{ flex: 1, minWidth: 0, maxWidth: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <div className="solution-image-col" style={{ flex: 1, minWidth: 0, maxWidth: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
               <div style={{ background: '#fff', borderRadius: '20px', boxShadow: '0 8px 32px rgba(23,82,240,0.10)', padding: '1.5em', display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', maxWidth: '380px' }}>
                 <video
                   src="/assets/jesseXBT-idea.mp4"
@@ -189,6 +232,7 @@ export default function PitchDeck() {
             </div>
           </div>
         </section>
+
 
         {/* How JesseXBT Works */}
         <section>
@@ -211,12 +255,14 @@ export default function PitchDeck() {
               style={{ fontSize: '1em', flex: 1, minWidth: 0, maxWidth: '48%' }}
             >
               <h2 style={{ textAlign: 'left', marginBottom: '0.7em' }}>How JesseXBT Works</h2>
-              <ul>
-                <li className="fragment fade-in">Pre-training on Jesse's persona & expertise</li>
-                <li className="fragment fade-in">Fine-tuning with dashboard feedback</li>
-                <li className="fragment fade-in">Retrieval-Augmented Generation (RAG) for real-time knowledge</li>
-                <li className="fragment fade-in">Continuous improvement via feedback loop</li>
-              </ul>
+              <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card">
+                <ul>
+                  <li className="fragment fade-in">Curates and processes data from Farcaster, YouTube, and more</li>
+                  <li className="fragment fade-in">Fine-tunes a custom LLM with Jesse's personality and knowledge</li>
+                  <li className="fragment fade-in">Uses RAG to fetch up-to-date, contextual info from multiple sources</li>
+                  <li className="fragment fade-in">Continuously improves via human feedback and active learning</li>
+                </ul>
+              </div>
             </div>
             <div
               className="how-jessexbt-works-image"
@@ -252,11 +298,13 @@ export default function PitchDeck() {
               style={{ flex: 1, minWidth: 0, maxWidth: '48%' }}
             >
               <h2 style={{ textAlign: 'left', marginBottom: '0.7em' }}>Dashboard & Feedback</h2>
-              <ul style={{ fontSize: '1em', textAlign: 'left' }}>
-                <li className="fragment fade-in">Review and improve agent responses</li>
-                <li className="fragment fade-in">Manage microgrants and builder interactions</li>
-                <li className="fragment fade-in">Analytics and insights for continuous growth</li>
-              </ul>
+              <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card">
+                <ul style={{ fontSize: '1em', textAlign: 'left' }}>
+                  <li className="fragment fade-in">Review and improve agent responses</li>
+                  <li className="fragment fade-in">Manage microgrants and builder interactions</li>
+                  <li className="fragment fade-in">Analytics and insights for continuous growth</li>
+                </ul>
+              </div>
             </div>
             <div
               className="dashboard-feedback-carousel"
@@ -269,52 +317,145 @@ export default function PitchDeck() {
 
         {/* Real Impact */}
         <section>
-          <div style={{ position: 'relative', width: '100%', minHeight: '420px', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
-            <h2>Real Impact</h2>
-            <ul style={{ fontSize: '1em', marginBottom: '2em', position: 'relative', zIndex: 2 }}>
-              <li className="fragment fade-in">1000+ builders supported daily (goal)</li>
-              <li className="fragment fade-in">Faster, fairer access to funding</li>
-              <li className="fragment fade-in">More innovation, less bottleneck</li>
-              <li className="fragment fade-in">A stronger, more inclusive Base community</li>
-            </ul>
+          <div
+            style={{
+              width: '100%',
+              minHeight: '420px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: '2em 0'
+            }}
+          >
+            <h2 style={{
+              fontWeight: 800,
+              fontSize: '2.2em',
+              marginBottom: '0.2em',
+              letterSpacing: '0.01em',
+              position: 'relative'
+            }}>
+              Real Impact
+              <span style={{
+                display: 'block',
+                width: 60,
+                height: 4,
+                background: 'linear-gradient(90deg,rgb(255, 255, 255) 60%, #1752F0 100%)',
+                borderRadius: 2,
+                margin: '0.3em auto 0 auto',
+                opacity: 0.7,
+                animation: 'impact-underline 2s infinite alternate'
+              }} />
+            </h2>
+            <div
+              className="fragment fade-in"
+              style={{
+                fontSize: '2.8em',
+                fontWeight: 700,
+                margin: '0.3em 0 0.7em 0',
+                letterSpacing: '0.01em',
+                textShadow: '0 0 18pxrgb(255, 255, 255), 0 0 2px #fff'
+              }}
+            >
+              <AnimatedStat target={1000} duration={1200} /> builders helped
+            </div>
+            <div
+              className="impact-points"
+              style={{
+                display: 'flex',
+                gap: '2.5em',
+                justifyContent: 'center',
+                alignItems: 'flex-start',
+                flexWrap: 'wrap',
+                marginTop: '1.2em'
+              }}
+            >
+              <div className="fragment fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: 120, transition: 'transform 0.4s', textAlign: 'center' }}>
+                <MdSpeed size={36} color="#8ecaff" style={{ marginBottom: 8 }} />
+                <div style={{ color: '#fff', fontSize: '1.1em', marginTop: 8 }}>Faster, fairer funding</div>
+              </div>
+              <div className="fragment fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: 120, transition: 'transform 0.4s', textAlign: 'center' }}>
+                <HiLightBulb size={36} color="#8ecaff" style={{ marginBottom: 8 }} />
+                <div style={{ color: '#fff', fontSize: '1.1em', marginTop: 8 }}>More innovation</div>
+              </div>
+              <div className="fragment fade-in" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minWidth: 120, transition: 'transform 0.4s', textAlign: 'center' }}>
+                <HiUserGroup size={36} color="#8ecaff" style={{ marginBottom: 8 }} />
+                <div style={{ color: '#fff', fontSize: '1.1em', marginTop: 8 }}>Inclusive community</div>
+              </div>
+            </div>
           </div>
         </section>
 
-           {/* Vision for the Future */}
-           <section>
-          <h2>Vision for the Future</h2>
-          <ul style={{ fontSize: '1em' }}>
-            <li className="fragment fade-in">Increased awareness of crypto, tech, and Base developments</li>
-            <li className="fragment fade-in">Sharper answers to provide the best feedback</li>
-            <li className="fragment fade-in">Ability to test products directly</li>
-            <li className="fragment fade-in">Analyze more context for deeper insights</li>
-          </ul>
-        </section>
-
-        {/* Why Now: Base Batches Context */}
+        {/* Roadmap Timeline (Single Row, One-Liner, Subtitle Below, No Animation) */}
         <section>
-          <h2>Why Now?</h2>
-          <ul style={{ fontSize: '1em' }}>
-            <li className="fragment fade-in">Base Batches: the perfect launchpad to scale JesseXBT's impact</li>
-            <li className="fragment fade-in">Access to top builders, mentors, and resources</li>
-            <li className="fragment fade-in">Accelerating our mission to empower every builder on Base</li>
-          </ul>
+          <h2 style={{ fontSize: '2em', marginBottom: '0.5em' }}>Roadmap</h2>
+          <div className="w-full overflow-hidden px-1 md:px-6">
+            <div className="flex flex-row flex-wrap justify-center items-start gap-x-1 gap-y-3 w-full">
+              <div className="flex flex-col items-center">
+                <div className="phase-card text-gray-900 font-extrabold mb-2 mt-2 mx-1" style={{ background: '#FFE066' }}>
+                  Phase 0
+                  <span className="block text-xs sm:text-sm font-semibold mt-1">MVP</span>
+                  <div className="phase-desc w-full text-center mt-1" style={{ color: '#000', whiteSpace: 'normal', fontSize: '0.85rem' }}>
+                    Train JesseXBT and launch agent.
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="phase-card text-gray-900 font-extrabold mb-2 mt-2 mx-1" style={{ background: '#A7F3D0' }}>
+                  Phase 1
+                  <span className="block text-xs sm:text-sm font-semibold mt-1">Core Infrastructure</span>
+                  <div className="phase-desc w-full text-center mt-1" style={{ color: '#000', whiteSpace: 'normal', fontSize: '0.85rem' }}>
+                    Build sentiment and feedback tools.
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="phase-card text-gray-900 font-extrabold mb-2 mt-2 mx-1" style={{ background: '#FCA5A5' }}>
+                  Phase 2
+                  <span className="block text-xs sm:text-sm font-semibold mt-1">Builder Evaluation</span>
+                  <div className="phase-desc w-full text-center mt-1" style={{ color: '#000', whiteSpace: 'normal', fontSize: '0.85rem' }}>
+                    Score and evaluate builders.
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="phase-card text-gray-900 font-extrabold mb-2 mt-2 mx-1" style={{ background: '#FDF6B2' }}>
+                  Phase 3
+                  <span className="block text-xs sm:text-sm font-semibold mt-1">Open Launch</span>
+                  <div className="phase-desc w-full text-center mt-1" style={{ color: '#000', whiteSpace: 'normal', fontSize: '0.85rem' }}>
+                    Public launch and monitor usage.
+                  </div>
+                </div>
+              </div>
+              <div className="flex flex-col items-center">
+                <div className="phase-card text-gray-900 font-extrabold mb-2 mt-2 mx-1" style={{ background: '#E9D5FF' }}>
+                  Phase 4
+                  <span className="block text-xs sm:text-sm font-semibold mt-1">Empowerment</span>
+                  <div className="phase-desc w-full text-center mt-1" style={{ color: '#000', whiteSpace: 'normal', fontSize: '0.85rem' }}>
+                    JesseXBT becomes 24/7 agent.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
         {/* Call to Action */}
         <section>
           <h2>Join Us</h2>
-          <ul style={{ fontSize: '1em' }}>
-            <li className="fragment fade-in">Help us build the future of onchain builder support</li>
-            <li className="fragment fade-in">Collaborate, support, or try JesseXBT</li>
-            <li className="fragment fade-in">
-              Follow @jessexbt on 
-              <a href="https://x.com/jessepollakxbt" target="_blank" rel="noopener noreferrer" style={{ color: '#7a8bb7', textDecoration: 'underline', margin: '0 0.3em' }}>X</a>,
-              <a href="https://warpcast.com/jessexbt" target="_blank" rel="noopener noreferrer" style={{ color: '#7a8bb7', textDecoration: 'underline', margin: '0 0.3em' }}>Farcaster</a>,
-              and
-              <a href="https://t.me/jessepollak_bot" target="_blank" rel="noopener noreferrer" style={{ color: '#7a8bb7', textDecoration: 'underline', margin: '0 0.3em' }}>Telegram</a>
-            </li>
-          </ul>
+          <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card">
+            <ul style={{ fontSize: '1em' }}>
+              <li className="fragment fade-in">Help us build the future of onchain builder support</li>
+              <li className="fragment fade-in">Collaborate, support, or try JesseXBT</li>
+              <li className="fragment fade-in">
+                Follow @jessexbt on 
+                <a href="https://x.com/jessepollakxbt" target="_blank" rel="noopener noreferrer" style={{ color: '#7a8bb7', textDecoration: 'underline', margin: '0 0.3em' }}>X</a>,
+                <a href="https://warpcast.com/jessexbt" target="_blank" rel="noopener noreferrer" style={{ color: '#7a8bb7', textDecoration: 'underline', margin: '0 0.3em' }}>Farcaster</a>,
+                and
+                <a href="https://t.me/jessepollak_bot" target="_blank" rel="noopener noreferrer" style={{ color: '#7a8bb7', textDecoration: 'underline', margin: '0 0.3em' }}>Telegram</a>
+              </li>
+            </ul>
+          </div>
         </section>
 
      
@@ -612,5 +753,37 @@ function FireworkLogo({ idx, total }: { idx: number; total: number }) {
         backgroundColor: 'transparent',
       }}
     />
+  );
+}
+
+// AnimatedStat component for count-up effect
+function AnimatedStat({ target = 1000, duration = 1200 }) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    let start = 0;
+    const step = Math.ceil(target / (duration / 16));
+    const interval = setInterval(() => {
+      start += step;
+      if (start >= target) {
+        setCount(target);
+        clearInterval(interval);
+      } else {
+        setCount(start);
+      }
+    }, 16);
+    return () => clearInterval(interval);
+  }, [target, duration]);
+  return (
+    <span
+      style={{
+        background: "linear-gradient(90deg,rgb(255, 255, 255) 60%, #fff 100%)",
+        WebkitBackgroundClip: "text",
+        WebkitTextFillColor: "transparent",
+        filter: "drop-shadow(0 0 18pxrgb(255, 255, 255))",
+        fontWeight: 900,
+      }}
+    >
+      {count.toLocaleString()}+
+    </span>
   );
 } 
