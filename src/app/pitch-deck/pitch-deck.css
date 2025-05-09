@@ -192,7 +192,7 @@ html, body, .reveal, .reveal .slides, .reveal .backgrounds {
     min-height: unset !important;
     width: 100vw !important;
     max-width: 100vw !important;
-    align-items: flex-start !important;
+    align-items: center !important;
     justify-content: flex-start !important;
     padding: 0 0.5em;
   }
@@ -256,12 +256,25 @@ html, body, .reveal, .reveal .slides, .reveal .backgrounds {
     overflow-wrap: break-word;
   }
   .solution-image-col {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    align-items: center !important;
+    padding: 0 !important;
+    margin: 0 auto 1.5em auto !important;
+  }
+  .solution-image-col img, .solution-image-col video {
     width: 100% !important;
     max-width: 100vw !important;
-    display: flex !important;
-    justify-content: center !important;
-    align-items: center !important;
-    margin-bottom: 1.5em;
+    height: auto !important;
+    max-height: 80vh !important;
+    object-fit: contain !important;
+    border-radius: 14px !important;
+    display: block;
+    margin: 0 auto;
   }
   .solution-title-mobile { display: block !important; }
   .solution-title-desktop { display: none !important; }
@@ -315,6 +328,10 @@ html, body, .reveal, .reveal .slides, .reveal .backgrounds {
     max-width: 95vw !important;
     height: auto !important;
     border-radius: 10px !important;
+  }
+  .frosted-card {
+    padding: 1.1em 0.7em !important;
+    margin: 1.2em 0 1.5em 0 !important;
   }
 }
 
@@ -565,8 +582,13 @@ html, body, .reveal, .reveal .slides, .reveal .backgrounds {
   box-shadow: 0 4px 32px rgba(23,82,240,0.10);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  padding: 1.5em 1.2em;
-  margin: 1.2em 0;
+  padding: 2.5em 1.2em 6em 1.2em;
+  margin: 2em 0;
+}
+
+.frosted-card--compact {
+  padding-top: 1.1em !important;
+  padding-bottom: 1.1em !important;
 }
 
 .solution-title-mobile { display: none; }
@@ -602,5 +624,29 @@ html, body, .reveal, .reveal .slides, .reveal .backgrounds {
     margin-top: 2em !important;
     margin-bottom: 2em !important;
     gap: 1.2em !important;
+  }
+}
+
+.reveal .slides section {
+  padding-top: 0.5em !important;
+  padding-bottom: 0.5em !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+.reveal .slides section > h2 {
+  margin-top: 0.3em !important;
+  margin-bottom: 0.2em !important;
+}
+.reveal .slides section > .frosted-card {
+  margin-top: 0.2em;
+  margin-bottom: 3.5em;
+}
+
+.how-jessexbt-works-slide {
+  align-items: center !important;
+}
+@media (max-width: 900px) {
+  .how-jessexbt-works-slide {
+    align-items: center !important;
   }
 } 

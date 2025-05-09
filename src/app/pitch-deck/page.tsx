@@ -166,7 +166,7 @@ export default function PitchDeck() {
               <li className="fragment fade-in" style={{ marginBottom: '1em' }}>
                 <span style={{ color: '#8ecaff', fontWeight: 600 }}>Bottleneck:</span> Funding and advice limited by human bandwidth
               </li>
-              <li className="fragment fade-in" style={{ marginBottom: '1em' }}>
+              <li className="fragment fade-in" style={{ marginBottom: '2.5em' }}>
                 <span style={{ color: '#8ecaff', fontWeight: 600 }}>Growth:</span> Community expansion capped by 1:1 interactions
               </li>
             </ul>
@@ -443,7 +443,7 @@ export default function PitchDeck() {
         {/* Call to Action */}
         <section>
           <h2>Join Us</h2>
-          <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card">
+          <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card frosted-card--compact">
             <ul style={{ fontSize: '1em' }}>
               <li className="fragment fade-in">Help us build the future of onchain builder support</li>
               <li className="fragment fade-in">Collaborate, support, or try JesseXBT</li>
