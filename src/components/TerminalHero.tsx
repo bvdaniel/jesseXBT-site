@@ -54,7 +54,7 @@ const TypeWriter = ({
 
     // Replace social media mentions with links
     const socialLinks = {
-      'X': 'https://x.com/jessepollakxbt',
+      'X': 'https://x.com/JesseXBT_ai',
       'Farcaster': 'https://warpcast.com/jessexbt',
       'Telegram': 'https://t.me/jessepollak_bot',
       'Zora': 'https://zora.co/@jessexbt',
@@ -494,7 +494,7 @@ const bannerLines = [
 
             {/* Right - Social Links with modern hover effects */}
             <div className="flex justify-center sm:justify-end items-center space-x-8">
-              <Link href="https://x.com/jessepollakxbt" target="_blank" rel="noopener noreferrer" className="group">
+              <Link href="https://x.com/JesseXBT_ai" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
                   <Image
                     src="/assets/x.png"
