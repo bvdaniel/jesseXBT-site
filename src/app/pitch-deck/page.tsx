@@ -7,11 +7,7 @@ import "reveal.js/dist/theme/black.css";
 import "./pitch-deck.css";
 import Link from "next/link";
 import { BouncingLogo } from "@/components/TerminalHero";
-import Image from "next/image";
-import KnowledgeGraphAnimation from "./KnowledgeGraphAnimation";
 import React from "react";
-import { motion } from "framer-motion";
-import { FaCheckCircle, FaLightbulb, FaUsers } from 'react-icons/fa';
 import { MdSpeed } from 'react-icons/md';
 import { HiLightBulb, HiUserGroup } from 'react-icons/hi';
 
@@ -247,12 +243,13 @@ export default function PitchDeck() {
               maxWidth: '1500px',
               margin: '0 auto',
               minHeight: '420px',
-              flexDirection: 'row',
+              paddingTop: 0,
+              paddingBottom: 0
             }}
           >
             <div
               className="how-jessexbt-works-text"
-              style={{ fontSize: '1em', flex: 1, minWidth: 0, maxWidth: '48%' }}
+              style={{ fontSize: '1em', flex: 1, minWidth: 0, maxWidth: '48%', height: '100%' }}
             >
               <h2 style={{ textAlign: 'left', marginBottom: '0.7em' }}>How JesseXBT Works</h2>
               <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card">
@@ -265,8 +262,8 @@ export default function PitchDeck() {
               </div>
             </div>
             <div
-              className="how-jessexbt-works-image"
-              style={{ flex: 1, minWidth: 0, maxWidth: '52%', display: 'flex', justifyContent: 'center' }}
+              className="how-jessexbt-works-image how-jessexbt-works-image--desktop-padding"
+              style={{ flex: 1, minWidth: 0, maxWidth: '52%', display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100%' }}
             >
               <img
                 src="/assets/fine tuning jesse.webp"
@@ -279,11 +276,12 @@ export default function PitchDeck() {
 
         {/* Dashboard & Feedback */}
         <section>
+          <h2 style={{ textAlign: 'left', marginBottom: '0.7em' }}>Dashboard & Feedback</h2>
           <div
             className="dashboard-feedback-slide"
             style={{
               display: 'flex',
-              alignItems: 'center',
+              alignItems: 'flex-start',
               justifyContent: 'center',
               gap: '3em',
               width: '90vw',
@@ -297,8 +295,7 @@ export default function PitchDeck() {
               className="dashboard-feedback-text"
               style={{ flex: 1, minWidth: 0, maxWidth: '48%' }}
             >
-              <h2 style={{ textAlign: 'left', marginBottom: '0.7em' }}>Dashboard & Feedback</h2>
-              <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card">
+              <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card dashboard-frosted-card" style={{ marginTop: 0, marginBottom: 0 }}>
                 <ul style={{ fontSize: '1em', textAlign: 'left' }}>
                   <li className="fragment fade-in">Review and improve agent responses</li>
                   <li className="fragment fade-in">Manage microgrants and builder interactions</li>
@@ -307,8 +304,8 @@ export default function PitchDeck() {
               </div>
             </div>
             <div
-              className="dashboard-feedback-carousel"
-              style={{ flex: 1, minWidth: 0, maxWidth: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}
+              className="dashboard-feedback-carousel dashboard-feedback-carousel--desktop-padding"
+              style={{ flex: 1, minWidth: 0, maxWidth: '40%', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', paddingTop: 0, marginTop: 0 }}
             >
               <DashboardCarousel />
             </div>

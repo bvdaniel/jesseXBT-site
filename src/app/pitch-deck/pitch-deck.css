@@ -649,4 +649,21 @@ html, body, .reveal, .reveal .slides, .reveal .backgrounds {
   .how-jessexbt-works-slide {
     align-items: center !important;
   }
+}
+
+@media (min-width: 900px) {
+  .how-jessexbt-works-image--desktop-padding {
+    padding-bottom: 2.5em;
+  }
+  .dashboard-feedback-text {
+    margin-top: 0;
+  }
+  .dashboard-feedback-carousel--desktop-padding {
+    margin-top: 0;
+    padding-top: 2.5em;
+  }
+  .dashboard-frosted-card {
+    padding-top: 1.5em;
+    padding-bottom: 2em;
+  }
 } 
