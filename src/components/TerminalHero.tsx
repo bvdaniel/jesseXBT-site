@@ -56,7 +56,7 @@ const TypeWriter = ({
     const socialLinks = {
       'X': 'https://x.com/JesseXBT_ai',
       'Farcaster': 'https://warpcast.com/jessexbt',
-      'Telegram': 'https://t.me/jessepollak_bot',
+      'Telegram': '@jessexbt_basebot',
       'Zora': 'https://zora.co/@jessexbt',
       'Jesse Pollak': 'https://x.com/jessepollak'
     };
@@ -519,7 +519,7 @@ const bannerLines = [
                 </div>
               </Link>
 
-              <Link href="https://t.me/jessepollak_bot" target="_blank" rel="noopener noreferrer" className="group">
+              <Link href="https://t.me/jessexbt_basebot" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
                   <FaTelegram className="w-6 h-6 text-white/80 group-hover:text-white transition-all duration-300 transform group-hover:scale-125 group-hover:-translate-y-1" />
                   <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
