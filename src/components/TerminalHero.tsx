@@ -56,7 +56,7 @@ const TypeWriter = ({
     const socialLinks = {
       'X': 'https://x.com/JesseXBT_ai',
       'Farcaster': 'https://warpcast.com/jessexbt',
-      'Telegram': '@jessexbt_basebot',
+      'Telegram': 'jessexbt_basebot',
       'Zora': 'https://zora.co/@jessexbt',
       'Jesse Pollak': 'https://x.com/jessepollak'
     };
