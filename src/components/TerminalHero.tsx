@@ -217,16 +217,16 @@ const bannerLines = [
     {
       username: "jesseXBT",
       message:
-        "My mission is to scale the number of builders that Jesse Pollak can support from ~10-100 per day to ~1000+ per day, while delivering high quality support and increasing access to funding."
+        "i'm helping builders on base succeed with high quality support and increasing access to funding."
        },
     {
-    username: "jesseXBT",
-    message:
-    "You can chat with me on X, Farcaster, and Telegram, and find my publications on Zora.",
+      username: "jesseXBT",
+      message:
+        "you can chat with me on Telegram now to start getting support and feedback on your project.",
     },
     {
       username: "jesseXBT",
-      message: "I'm trained on Jesse Pollak's writing, social media, videos, and websites like base.org to maintain a deep knowledge base."
+      message: "i'm trained on jesse pollak's writing, social media, videos, and websites like base.org to maintain a deep knowledge base."
     },
     {
     username: "agentbot",
@@ -234,30 +234,6 @@ const bannerLines = [
   }
   ];
 
-  const conversations2 = [
-    {
-      username: "builder",
-      message:
-        "Your custommer service, influencers or fans in your community, powered by Ai-agents that can chat like a human and use natural language to solve questions ",
-    },
-    {
-    username: "agentbot",
-    message: "Loading AI agent infrastructure... Monitoring agent Activity...",
-    },
-    {
-      username: "agentbot",
-      message:
-        "Training knowledge... Unique personalities... Connecting to data sources... ",
-    },
-    {
-      username: "agentbot",
-      message: "Connecting to X, Farcaster, Telegram, Website... Setting automations...",
-    },
-    {
-    username: "agentbot",
-    message: "Deploying..."
-  }
-  ];
 
   const getTimestamp = () => {
     const now = new Date();
@@ -346,7 +322,7 @@ const bannerLines = [
   }, [lines]);
 
   return (
-    <div className="h-screen bg-[#1752F0] flex flex-col">
+    <div className="h-screen bg-[#1752F0] flex flex-col justify-between">
       <div className="relative flex flex-1">
         {/* Terminal Content */}
         <div
@@ -361,6 +337,19 @@ const bannerLines = [
             letterSpacing: "0.05em",
           }}
         >
+          {/* --- CTA: Start now button --- */}
+          <div className="w-full flex justify-start mb-6 z-20 relative">
+            <a
+              href="https://t.me/jessexbt_basebot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center gap-3 bg-[#1752F0] text-[#00fff7] font-bold text-2xl xs:text-3xl sm:text-3xl md:text-4xl rounded-md border-2 border-[#00fff7] px-10 py-5 hover:shadow-[0_0_16px_3px_#00fff7] hover:bg-[#1142c0] active:scale-98 transition-all duration-150 shadow-none"
+            >
+              <FaTelegram className="w-7 h-7 text-[#00fff7]" />
+              Start now
+            </a>
+          </div>
+          {/* --- END CTA --- */}
           {/* Scanline effect */}
           <div 
             className="absolute inset-0 pointer-events-none" 
@@ -384,17 +373,37 @@ const bannerLines = [
                 transition={{ duration: 0.2 }}
                 className={`${line.username ? 'mb-2 sm:mb-3 leading-relaxed' : 'leading-none'}`}
               >
-                {line.username && (
-                  <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 mb-1 sm:mb-0">
-                    <span className="text-white/50 font-bold tracking-wider text-xs sm:text-sm">[{line.timestamp}]</span>
-                    <span className="text-white font-bold tracking-wider text-xs sm:text-sm">{line.username}:</span>
+                {!line.username ? (
+                  <TypeWriter
+                    text={line.message}
+                    className={'font-bold text-white tracking-wider text-[8px] xs:text-[10px] sm:text-xs md:text-sm whitespace-pre cursor-pointer flex items-center'}
+                    onClick={undefined}
+                  />
+                ) : line.username === "jesseXBT" && line.message === "i'm trained on jesse pollak's writing, social media, videos, and websites like base.org to maintain a deep knowledge base." ? (
+                  <div className="hidden sm:block">
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 mb-1 sm:mb-0">
+                      <span className="text-white/50 font-bold tracking-wider text-xs xs:text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg">[{line.timestamp}]</span>
+                      <span className="text-white font-bold tracking-wider text-xs xs:text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg">{line.username}:</span>
+                    </div>
+                    <TypeWriter
+                      text={line.message}
+                      className={'pl-0 sm:pl-4 text-xs sm:text-sm md:text-xl lg:text-2xl xl:text-2xl break-words text-white/90 flex items-center'}
+                      onClick={undefined}
+                    />
                   </div>
+                ) : (
+                  <>
+                    <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 mb-1 sm:mb-0">
+                      <span className="text-white/50 font-bold tracking-wider text-xs xs:text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg">[{line.timestamp}]</span>
+                      <span className="text-white font-bold tracking-wider text-xs xs:text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg">{line.username}:</span>
+                    </div>
+                    <TypeWriter
+                      text={line.message}
+                      className={'pl-0 sm:pl-4 text-xs sm:text-sm md:text-xl lg:text-2xl xl:text-2xl break-words text-white/90 flex items-center'}
+                      onClick={undefined}
+                    />
+                  </>
                 )}
-                <TypeWriter 
-                  text={line.message}
-                  className={`${!line.username ? 'font-bold text-white tracking-wider text-[8px] xs:text-[10px] sm:text-xs md:text-sm whitespace-pre cursor-pointer' : 'text-white/90 pl-0 sm:pl-4 text-xs sm:text-sm md:text-base break-words'} flex items-center ${line.message.includes('Current Bid:') ? 'text-blue-300 font-bold' : ''} ${line.message.includes('Click here') ? 'text-blue-200 animate-pulse' : ''}`}
-                  onClick={(!line.username && (line.message.includes('BID NOW') || line.message.includes('Current Bid:') || line.message.includes('Click here'))) ? handleBidVideo : undefined}
-                />
               </motion.div>
             ))}
             {isPlaying && (
@@ -427,69 +436,68 @@ const bannerLines = [
       </div>
 
       {/* Modern Footer */}
-      <div className="relative z-20 bg-gradient-to-t from-[#00008B] to-[#00008B]/90 border-t border-white/10">
-        <div className="max-w-7xl mx-auto px-4">
+      <div className="relative z-20 bg-gradient-to-t from-[#00008B] to-[#00008B]/90 border-t border-white/10 w-full">
+        <div className="max-w-7xl mx-auto px-4 w-full">
           {/* Main footer content */}
-          <div className="grid grid-cols-1 sm:grid-cols-[1fr,auto,1fr] gap-4 items-center py-4">
+          <div className="flex flex-col items-center space-y-4 py-4 sm:grid sm:grid-cols-[1fr,auto,1fr] sm:gap-4 sm:items-center sm:space-y-0 w-full">
             {/* Left - Controls with modern styling */}
-            <div className="flex justify-center sm:justify-start items-center">
-              <button 
-                onClick={() => setIsPlaying(!isPlaying)}
-                className="group flex items-center space-x-3 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300"
-              >
-                <div className="w-2 h-2 bg-white/70 rounded-full group-hover:bg-white group-hover:animate-pulse transition-all duration-300" />
-                <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">PAUSE</span>
-              </button>
-            </div>
-
-            {/* Center - Mission Link */}
-            <div className="order-first sm:order-none mb-4 sm:mb-0 flex space-x-2">
-              <Link 
-                href="https://docs.google.com/document/d/1e1ok-cyJdm83ImQzlPshE8uDt4oci7uxaigGqqh_seA/edit?tab=t.0" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300"
-              >
-                <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">MISSION</span>
-                <svg 
-                  className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
+            <div className="w-full flex flex-col items-center sm:justify-start sm:items-center">
+              {/* On mobile, grid for main buttons */}
+              <div className="grid grid-cols-2 gap-3 w-full max-w-xs sm:flex sm:space-x-2 sm:gap-0 sm:max-w-none">
+                <Link 
+                  href="https://docs.google.com/document/d/1e1ok-cyJdm83ImQzlPshE8uDt4oci7uxaigGqqh_seA/edit?tab=t.0" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 col-span-1"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-              <Link 
-                href="https://jessexbt.gitbook.io/jessexbt-docs/" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="group flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300"
-              >
-                <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">DOCS</span>
-                <svg 
-                  className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
+                  <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">MISSION</span>
+                  <svg 
+                    className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+                <Link 
+                  href="https://jessexbt.gitbook.io/jessexbt-docs/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="group flex items-center justify-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 col-span-1"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
-              <Link 
-                href="/pitch-deck" 
-                className="group flex items-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300"
-              >
-                <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">PITCH DECK</span>
-                <svg 
-                  className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
-                  fill="none" 
-                  viewBox="0 0 24 24" 
-                  stroke="currentColor"
+                  <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">DOCS</span>
+                  <svg 
+                    className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+                <Link 
+                  href="/pitch-deck" 
+                  className="group flex items-center justify-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 col-span-1"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                </svg>
-              </Link>
+                  <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">PITCH DECK</span>
+                  <svg 
+                    className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
+                    fill="none" 
+                    viewBox="0 0 24 24" 
+                    stroke="currentColor"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                  </svg>
+                </Link>
+                <button 
+                  onClick={() => setIsPlaying(!isPlaying)}
+                  className="group flex items-center justify-center space-x-3 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 col-span-2 sm:col-span-1"
+                >
+                  <div className="w-2 h-2 bg-white/70 rounded-full group-hover:bg-white group-hover:animate-pulse transition-all duration-300" />
+                  <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">PAUSE</span>
+                </button>
+              </div>
             </div>
 
             {/* Right - Social Links with modern hover effects */}
@@ -584,6 +592,9 @@ const bannerLines = [
           scrollbar-width: thin;
           scrollbar-color: #1752F0 rgba(23, 82, 240, 0.1);
         }
+
+        .ascii-art { @apply font-bold text-white text-[8px] xs:text-[10px] sm:text-xs md:text-sm whitespace-pre cursor-pointer; }
+        .chat-line { @apply font-bold text-white text-lg xs:text-xl sm:text-2xl md:text-3xl flex items-center; }
       `}</style>
     </div>
   );
