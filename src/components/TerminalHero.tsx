@@ -327,7 +327,7 @@ const bannerLines = [
         {/* Terminal Content */}
         <div
           ref={terminalRef}
-          className="flex-1 font-mono text-white pt-24 sm:pt-32 md:pt-32 lg:pt-32 xl:pt-36 px-3 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-16 overflow-y-auto relative"
+          className="flex-1 font-mono text-white pt-24 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-6 overflow-y-auto relative"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
@@ -343,7 +343,7 @@ const bannerLines = [
               href="https://t.me/jessexbt_basebot"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 bg-[#1752F0] text-[#00fff7] font-bold text-2xl xs:text-3xl sm:text-3xl md:text-4xl rounded-md border-2 border-[#00fff7] px-10 py-5 hover:shadow-[0_0_16px_3px_#00fff7] hover:bg-[#1142c0] active:scale-98 transition-all duration-150 shadow-none"
+              className="flex items-center justify-center gap-3 bg-[#1752F0] text-[#00fff7] font-bold text-2xl xs:text-3xl sm:text-2xl md:text-3xl rounded-md border-2 border-[#00fff7] px-8 py-4 hover:shadow-[0_0_12px_2px_#00fff7] hover:bg-[#1142c0] active:scale-98 transition-all duration-150 shadow-none"
             >
               <FaTelegram className="w-7 h-7 text-[#00fff7]" />
               Start now
@@ -382,24 +382,24 @@ const bannerLines = [
                 ) : line.username === "jesseXBT" && line.message === "i'm trained on jesse pollak's writing, social media, videos, and websites like base.org to maintain a deep knowledge base." ? (
                   <div className="hidden sm:block">
                     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 mb-1 sm:mb-0">
-                      <span className="text-white/50 font-bold tracking-wider text-xs xs:text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg">[{line.timestamp}]</span>
-                      <span className="text-white font-bold tracking-wider text-xs xs:text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg">{line.username}:</span>
+                      <span className="text-white/50 font-bold tracking-wider text-xs xs:text-sm sm:text-sm md:text-base lg:text-base xl:text-base">[{line.timestamp}]</span>
+                      <span className="text-white font-bold tracking-wider text-xs xs:text-sm sm:text-sm md:text-base lg:text-base xl:text-base">{line.username}:</span>
                     </div>
                     <TypeWriter
                       text={line.message}
-                      className={'pl-0 sm:pl-4 text-xs sm:text-sm md:text-xl lg:text-2xl xl:text-2xl break-words text-white/90 flex items-center'}
+                      className={'pl-0 sm:pl-4 text-xs sm:text-sm md:text-lg lg:text-xl xl:text-xl break-words text-white/90 flex items-center'}
                       onClick={undefined}
                     />
                   </div>
                 ) : (
                   <>
                     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 mb-1 sm:mb-0">
-                      <span className="text-white/50 font-bold tracking-wider text-xs xs:text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg">[{line.timestamp}]</span>
-                      <span className="text-white font-bold tracking-wider text-xs xs:text-sm sm:text-base md:text-lg lg:text-lg xl:text-lg">{line.username}:</span>
+                      <span className="text-white/50 font-bold tracking-wider text-xs xs:text-sm sm:text-sm md:text-base lg:text-sm xl:text-sm">[{line.timestamp}]</span>
+                      <span className="text-white font-bold tracking-wider text-xs xs:text-sm sm:text-sm md:text-base lg:text-sm xl:text-sm">{line.username}:</span>
                     </div>
                     <TypeWriter
                       text={line.message}
-                      className={'pl-0 sm:pl-4 text-xs sm:text-sm md:text-xl lg:text-2xl xl:text-2xl break-words text-white/90 flex items-center'}
+                      className={'pl-0 sm:pl-4 text-xs sm:text-sm md:text-lg lg:text-lg xl:text-lg break-words text-white/90 flex items-center'}
                       onClick={undefined}
                     />
                   </>
@@ -476,20 +476,7 @@ const bannerLines = [
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
                   </svg>
                 </Link>
-                <Link 
-                  href="/pitch-deck" 
-                  className="group flex items-center justify-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 col-span-1"
-                >
-                  <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">PITCH DECK</span>
-                  <svg 
-                    className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
+    
                 <button 
                   onClick={() => setIsPlaying(!isPlaying)}
                   className="group flex items-center justify-center space-x-3 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 col-span-2 sm:col-span-1"
