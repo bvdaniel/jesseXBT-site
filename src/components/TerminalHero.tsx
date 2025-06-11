@@ -217,7 +217,7 @@ const bannerLines = [
     {
       username: "jesseXBT",
       message:
-        "i'm helping builders on base succeed with high quality support and increasing access to funding."
+        "i'm helping builders on base succeed with 24/7high quality support and increasing access to funding."
        },
     {
       username: "jesseXBT",
