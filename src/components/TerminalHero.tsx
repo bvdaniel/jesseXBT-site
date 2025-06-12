@@ -322,19 +322,20 @@ const bannerLines = [
   }, [lines]);
 
   return (
-    <div className="h-screen bg-[#1752F0] flex flex-col justify-between">
+    <div className="h-screen bg-black flex flex-col justify-between">
       <div className="relative flex flex-1">
         {/* Terminal Content */}
         <div
           ref={terminalRef}
-          className="flex-1 font-mono text-white pt-24 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-16 xl:px-24 pb-6 overflow-y-auto relative"
+          className="flex-1 font-[JetBrains_Mono] text-white pt-24 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-[56px] xl:px-[56px] pb-6 overflow-y-auto relative text-[16px] leading-[1.5] hide-scrollbar"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
             backgroundSize: "50px 50px",
-            backgroundColor: "#1752F0",
-            fontSize: "13px",
+            backgroundColor: "#000000",
+            fontSize: "16px",
             letterSpacing: "0.05em",
+            fontFamily: 'JetBrains Mono, monospace',
           }}
         >
           {/* --- CTA: Start now button --- */}
@@ -343,10 +344,11 @@ const bannerLines = [
               href="https://t.me/jessexbt_basebot"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 bg-[#1752F0] text-[#00fff7] font-bold text-2xl xs:text-3xl sm:text-2xl md:text-3xl rounded-md border-2 border-[#00fff7] px-8 py-4 hover:shadow-[0_0_12px_2px_#00fff7] hover:bg-[#1142c0] active:scale-98 transition-all duration-150 shadow-none"
+              className="flex items-center justify-center gap-3 bg-white text-black font-bold text-xl rounded-xl border-2 border-white px-8 py-4 transition-all duration-150 shadow-none hover:shadow-md hover:bg-gray-100 focus:outline-none font-[Space_Grotesk]"
             >
-              <FaTelegram className="w-7 h-7 text-[#00fff7]" />
+              <FaTelegram className="w-7 h-7 text-black" />
               Start now
+              <svg className="w-5 h-5 ml-2 text-black" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 7l-10 10M17 7H7m10 0v10" /></svg>
             </a>
           </div>
           {/* --- END CTA --- */}
@@ -394,7 +396,7 @@ const bannerLines = [
                 ) : (
                   <>
                     <div className="flex flex-col sm:flex-row sm:items-center sm:space-x-2 mb-1 sm:mb-0">
-                      <span className="text-white/50 font-bold tracking-wider text-xs xs:text-sm sm:text-sm md:text-base lg:text-sm xl:text-sm">[{line.timestamp}]</span>
+                      <span className="text-white/40 font-bold tracking-wider text-[12px] font-[JetBrains_Mono]">[{line.timestamp}]</span>
                       <span className="text-white font-bold tracking-wider text-xs xs:text-sm sm:text-sm md:text-base lg:text-sm xl:text-sm">{line.username}:</span>
                     </div>
                     <TypeWriter
@@ -407,11 +409,7 @@ const bannerLines = [
               </motion.div>
             ))}
             {isPlaying && (
-              <motion.span
-                className="inline-block h-4 sm:h-5 w-1 sm:w-2 bg-white ml-2 sm:ml-4"
-                animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.8, repeat: Infinity }}
-              />
+              <span className="inline-block h-4 sm:h-5 w-1 sm:w-2 bg-[#00f0ff] ml-2 sm:ml-4 animate-pulse-glow" />
             )}
           </div>
         </div>
@@ -420,7 +418,7 @@ const bannerLines = [
         <div className="hidden lg:block w-[400px] h-full relative">
           <video
             className="absolute inset-0 w-full h-full object-cover"
-            src="/assets/jesseXBT.mp4"
+            src="/assets/cyberjesse.mp4"
             autoPlay
             loop
             muted
@@ -428,15 +426,15 @@ const bannerLines = [
             preload="auto"
             poster="/assets/jesseXBT-poster.jpg"
           >
-            <source src="/assets/jesseXBT.mp4" type="video/mp4" />
+            <source src="/assets/cyberjesse.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-[#1752F0] via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-transparent pointer-events-none" />
         </div>
       </div>
 
       {/* Modern Footer */}
-      <div className="relative z-20 bg-gradient-to-t from-[#00008B] to-[#00008B]/90 border-t border-white/10 w-full">
+      <div className="relative z-20 bg-gradient-to-t from-[#111111] to-[#111111]/90 border-t border-white/10 w-full">
         <div className="max-w-7xl mx-auto px-4 w-full">
           {/* Main footer content */}
           <div className="flex flex-col items-center space-y-2 py-4 sm:grid sm:grid-cols-[1fr,auto,1fr] sm:gap-4 sm:items-center sm:space-y-0 w-full">
@@ -584,27 +582,62 @@ const bannerLines = [
         /* Custom Scrollbar Styles */
         ::-webkit-scrollbar {
           width: 10px;
-          background: rgba(23, 82, 240, 0.1);
+          background: rgba(0, 0, 0, 0.1);
         }
 
         ::-webkit-scrollbar-thumb {
-          background: #1752F0;
+          background: #111111;
           border-radius: 4px;
-          border: 2px solid #00008B;
+          border: 2px solid #000000;
         }
 
         ::-webkit-scrollbar-thumb:hover {
-          background: #1142c0;
+          background: #222222;
         }
 
         /* Firefox */
         * {
           scrollbar-width: thin;
-          scrollbar-color: #1752F0 rgba(23, 82, 240, 0.1);
+          scrollbar-color: #111111 rgba(0, 0, 0, 0.1);
         }
 
         .ascii-art { @apply font-bold text-white text-[8px] xs:text-[10px] sm:text-xs md:text-sm whitespace-pre cursor-pointer; }
         .chat-line { @apply font-bold text-white text-lg xs:text-xl sm:text-2xl md:text-3xl flex items-center; }
+
+        /* Custom CSS for .button-neon-glass, .hologram-glow, .animate-pulse-glow, .scroll-arrow */
+        .button-neon-glass {
+          position: relative;
+          overflow: hidden;
+        }
+
+        .hologram-glow {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.2) 0%, transparent 70%);
+          pointer-events: none;
+        }
+
+        .animate-pulse-glow {
+          position: absolute;
+          inset: 0;
+          background: radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.2) 0%, transparent 70%);
+          pointer-events: none;
+        }
+
+        .scroll-arrow {
+          position: absolute;
+          bottom: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          z-index: 30;
+        }
+
+        .hide-scrollbar {
+          scrollbar-width: none;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
       `}</style>
     </div>
   );
