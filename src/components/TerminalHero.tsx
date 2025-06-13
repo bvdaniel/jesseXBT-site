@@ -327,7 +327,7 @@ const bannerLines = [
         {/* Terminal Content */}
         <div
           ref={terminalRef}
-          className="flex-1 font-[JetBrains_Mono] text-white pt-24 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-[56px] xl:px-[56px] pb-6 overflow-y-auto relative text-[16px] leading-[1.5] hide-scrollbar"
+          className="flex-1 font-[JetBrains_Mono] text-white pt-8 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-[56px] xl:px-[56px] pb-6 overflow-y-auto relative text-[16px] leading-[1.5] hide-scrollbar"
           style={{
             backgroundImage:
               "linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
@@ -437,9 +437,9 @@ const bannerLines = [
       <div className="relative z-20 bg-gradient-to-t from-[#111111] to-[#111111]/90 border-t border-white/10 w-full">
         <div className="max-w-7xl mx-auto px-4 w-full">
           {/* Main footer content */}
-          <div className="flex flex-col items-center space-y-2 py-4 sm:grid sm:grid-cols-[1fr,auto,1fr] sm:gap-4 sm:items-center sm:space-y-0 w-full">
+          <div className="flex flex-col items-center space-y-0 py-1 sm:grid sm:grid-cols-[1fr,auto,1fr] sm:gap-4 sm:items-center sm:space-y-2 sm:py-4 w-full">
             {/* Left - Controls with modern styling */}
-            <div className="w-full flex flex-col items-center sm:justify-start sm:items-center">
+            <div className="w-full flex flex-col items-center sm:justify-start sm:items-center mb-6 sm:mb-0">
               {/* On mobile, grid for main buttons */}
               <div className="grid grid-cols-2 gap-3 w-full max-w-xs sm:flex sm:space-x-2 sm:gap-0 sm:max-w-none">
                 <Link 
@@ -475,18 +475,11 @@ const bannerLines = [
                   </svg>
                 </Link>
     
-                <button 
-                  onClick={() => setIsPlaying(!isPlaying)}
-                  className="group flex items-center justify-center space-x-3 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 col-span-2 sm:col-span-1"
-                >
-                  <div className="w-2 h-2 bg-white/70 rounded-full group-hover:bg-white group-hover:animate-pulse transition-all duration-300" />
-                  <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">PAUSE</span>
-                </button>
               </div>
             </div>
 
             {/* Right - Social Links with modern hover effects */}
-            <div className="flex justify-center sm:justify-end items-center space-x-8">
+            <div className="flex justify-center sm:justify-end items-center space-x-8 mt-6 mb-4 sm:mt-0 sm:mb-0">
               <Link href="https://x.com/JesseXBT_ai" target="_blank" rel="noopener noreferrer" className="group">
                 <div className="relative">
                   <Image
@@ -519,18 +512,6 @@ const bannerLines = [
                 </div>
               </Link>
   
-              <Link href="https://zora.co/@jessexbt" target="_blank" rel="noopener noreferrer" className="group">
-                <div className="relative">
-                  <Image
-                    src="/assets/zora.png"
-                    alt="Zora"
-                    width={24}
-                    height={24}
-                    className="opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-125 group-hover:-translate-y-1"
-                  />
-                  <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                </div>
-              </Link>
             </div>
 
             {/* Desktop: supported by base and jesse pollak | built with love by a0x, all in one row */}
