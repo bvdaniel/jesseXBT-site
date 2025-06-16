@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/assets/favicon.ico',
     shortcut: '/assets/favicon-16x16.png',
-    apple: '/assets/apple-touch-icon.png',
+    apple: '/assets/apple-touch-icon.jpg',
   },
   manifest: '/assets/site.webmanifest',
 };
