@@ -418,7 +418,7 @@ const bannerLines = [
         <div className="hidden lg:block w-[400px] h-full relative">
           <video
             className="absolute inset-0 w-full h-full object-cover"
-            src="/assets/cyberjesse.mp4"
+            src="/assets/jessecubes.mp4"
             autoPlay
             loop
             muted
@@ -426,10 +426,9 @@ const bannerLines = [
             preload="auto"
             poster="/assets/jesseXBT-poster.jpg"
           >
-            <source src="/assets/cyberjesse.mp4" type="video/mp4" />
+            <source src="/assets/jessecubes.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-transparent pointer-events-none" />
         </div>
       </div>
 
