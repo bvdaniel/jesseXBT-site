@@ -6,11 +6,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "jesseXBT",
-  description: "Digital clone of @jessepollak. here to help you build.",
+  description: "onchain clone of @jessepollak. here to help you build.",
   metadataBase: new URL('https://jessexbt.live'),
   openGraph: {
     title: 'jesseXBT',
-    description: 'Digital clone of @jessepollak. here to help you build.',
+    description: 'onchain clone of @jessepollak. here to help you build.',
     url: 'https://www.jessexbt.live',
     siteName: 'jesseXBT',
     images: [
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'jesseXBT',
-    description: 'Digital clone of @jessepollak. here to help you build.',
+    description: 'onchain clone of @jessepollak. here to help you build.',
     creator: '@jessepollak',
     images: ['/assets/jesseXBT-preview.png'],
   },

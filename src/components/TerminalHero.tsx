@@ -301,7 +301,7 @@ const bannerLines = [
           bannerStartedRef.current = false;
           bannerIndexRef.current = 0;
           setTimeout(addLine, 100);
-        }, 15000); // Shorter delay before restart
+        }, 5000); // Shorter reset delay
       }
     };
 
@@ -322,7 +322,7 @@ const bannerLines = [
   }, [lines]);
 
   return (
-    <div className="min-h-screen bg-black flex flex-col justify-between relative overflow-hidden">
+    <div className="h-auto lg:min-h-screen bg-black flex flex-col justify-start relative overflow-hidden">
       {/* Fixed grid background */}
       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true"
         style={{
@@ -332,15 +332,17 @@ const bannerLines = [
           backgroundColor: "#000000",
         }}
       />
-      <div className="relative flex flex-col lg:flex-row items-stretch z-30 w-full">
+      <div className="relative flex flex-col lg:flex-row items-stretch z-30 w-full h-auto">
         {/* Terminal Content */}
         <div
           ref={terminalRef}
-          className="font-[JetBrains_Mono] text-white pt-8 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-[56px] xl:px-[56px] pb-0 sm:pb-6 relative text-[16px] leading-[1.5] hide-scrollbar z-10 flex-1"
+          className="font-[JetBrains_Mono] text-white pt-8 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-[56px] xl:px-[56px] pb-8 relative text-[16px] leading-[1.5] hide-scrollbar z-10 flex-1 h-auto terminal-container"
           style={{
             fontSize: "16px",
             letterSpacing: "0.05em",
             fontFamily: 'JetBrains Mono, monospace',
+            maxHeight: '70vh',
+            overflowY: 'auto'
           }}
         >
           {/* --- CTA: Start now button --- */}
@@ -480,6 +482,17 @@ const bannerLines = [
 
         .ascii-art { @apply font-bold text-white text-[8px] xs:text-[10px] sm:text-xs md:text-sm whitespace-pre cursor-pointer; }
         .chat-line { @apply font-bold text-white text-lg xs:text-xl sm:text-2xl md:text-3xl flex items-center; }
+
+        /* Terminal container styles */
+        .terminal-container {
+          max-height: 70vh;
+          overflow-y: auto;
+        }
+
+        .terminal-container :last-child {
+          margin-bottom: 0;
+          padding-bottom: 0;
+        }
 
         /* Custom CSS for .button-neon-glass, .hologram-glow, .animate-pulse-glow, .scroll-arrow */
         .button-neon-glass {

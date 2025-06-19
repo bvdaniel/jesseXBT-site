@@ -206,7 +206,7 @@ export default function PitchDeck() {
               <div className="border-r-2 border-l-2 border-white/20 pr-4 pl-4 sm:border-none sm:pr-0 sm:pl-0 frosted-card solution-card">
                 <h2 style={{ textAlign: 'left', marginBottom: '0.7em', fontSize: '1.3em', fontWeight: 800 }}>The Solution: JesseXBT</h2>
                 <ul style={{ fontSize: '1em', textAlign: 'left' }}>
-                  <li className="fragment fade-in">AI-powered digital sidekick for builders</li>
+                  <li className="fragment fade-in">AI-powered onchain sidekick for builders</li>
                   <li className="fragment fade-in">Trained on Jesse's writing, social, and video content</li>
                   <li className="fragment fade-in">Delivers advice, talent qualification, and microgrants</li>
                   <li className="fragment fade-in">Accessible via X, Farcaster and Telegram.</li>
