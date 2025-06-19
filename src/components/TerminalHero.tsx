@@ -336,13 +336,11 @@ const bannerLines = [
         {/* Terminal Content */}
         <div
           ref={terminalRef}
-          className="font-[JetBrains_Mono] text-white pt-8 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-[56px] xl:px-[56px] pb-24 sm:pb-8 relative text-[16px] leading-[1.5] hide-scrollbar z-10 flex-1 h-full"
+          className="font-[JetBrains_Mono] text-white pt-8 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-[56px] xl:px-[56px] relative text-[16px] leading-[1.5] hide-scrollbar z-10 flex-1 h-full flex flex-col"
           style={{
             fontSize: "16px",
             letterSpacing: "0.05em",
             fontFamily: 'JetBrains Mono, monospace',
-            maxHeight: '100%',
-            overflowY: 'auto'
           }}
         >
           {/* --- CTA: Start now button (desktop) --- */}
@@ -373,7 +371,7 @@ const bannerLines = [
           <BouncingLogo />
 
           {/* Terminal content */}
-          <div className="relative z-10 flex-1 min-h-0">
+          <div className="relative z-10 h-[70vh] overflow-y-auto">
             {lines.map((line, index) => (
               <motion.div 
                 key={line.id}
@@ -421,18 +419,20 @@ const bannerLines = [
           </div>
 
           {/* --- CTA: Start now button (mobile) --- */}
-          <div className="sm:hidden absolute left-0 right-0 bottom-0 w-full flex justify-center z-50 bg-gradient-to-t from-black via-black to-transparent pt-8 pb-4">
-            <a
-              href="https://t.me/jessexbt_basebot"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center justify-center gap-4 bg-white text-black font-bold text-[22px] rounded-xl border-2 border-white px-8 py-4 transition-all duration-150 shadow-none hover:shadow-md hover:bg-gray-100 focus:outline-none font-[Space_Grotesk] w-[calc(100%-2rem)] mx-4"
-              style={{ minHeight: '64px' }}
-            >
-              <FaTelegram className="w-7 h-7 text-black flex-shrink-0" aria-hidden="true" />
-              <span className="flex-shrink-0 leading-[1] inline-flex items-center">Start now</span>
-              <svg className="w-5 h-5 ml-2 text-black flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M17 7l-10 10M17 7H7m10 0v10" /></svg>
-            </a>
+          <div className="sm:hidden w-full flex justify-center z-50 mt-4">
+            <div className="w-full bg-gradient-to-t from-black via-black to-transparent pt-4 pb-4">
+              <a
+                href="https://t.me/jessexbt_basebot"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-4 bg-white text-black font-bold text-[22px] rounded-xl border-2 border-white px-8 py-4 transition-all duration-150 shadow-none hover:shadow-md hover:bg-gray-100 focus:outline-none font-[Space_Grotesk] w-[calc(100%-2rem)] mx-4"
+                style={{ minHeight: '64px' }}
+              >
+                <FaTelegram className="w-7 h-7 text-black flex-shrink-0" aria-hidden="true" />
+                <span className="flex-shrink-0 leading-[1] inline-flex items-center">Start now</span>
+                <svg className="w-5 h-5 ml-2 text-black flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M17 7l-10 10M17 7H7m10 0v10" /></svg>
+              </a>
+            </div>
           </div>
         </div>
         {/* Video Section */}

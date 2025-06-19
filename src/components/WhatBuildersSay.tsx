@@ -201,16 +201,16 @@ export default function WhatBuildersSay() {
             >
               {/* Card */}
               <div className="w-full max-w-xl mx-auto">
-                <div className="relative group min-h-[300px] sm:min-h-[400px] flex flex-col">
+                <div className="relative group h-[420px] sm:h-[480px] flex flex-col">
                   {/* Glow effect */}
                   <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0052FF]/20 to-transparent rounded-2xl blur opacity-50 group-hover:opacity-70 transition duration-1000"></div>
                   
                   {/* Card content */}
-                  <div className="relative bg-[#030712]/40 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-4 sm:p-6 md:p-8 flex-1">
+                  <div className="relative bg-[#030712]/40 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-4 sm:p-6 md:p-8 flex-1 overflow-y-auto hide-scrollbar">
                     {/* Header */}
                     <div className="flex flex-col gap-3 mb-5 sm:mb-6">
                       {/* Avatar */}
-                      <div className="relative w-10 h-10">
+                      <div className="relative w-10 h-10 flex-shrink-0">
                         <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0052FF]/30 to-transparent rounded-full blur opacity-50"></div>
                         <Image
                           src={testimonial.avatar}
@@ -274,12 +274,12 @@ export default function WhatBuildersSay() {
           </AnimatePresence>
 
           {/* Navigation - Now positioned absolutely */}
-          <div className="absolute left-1/2 -translate-x-1/2 bottom-[-32px] sm:bottom-[-80px] flex justify-center gap-3">
+          <div className="absolute left-1/2 -translate-x-1/2 bottom-[-48px] sm:bottom-[-80px] flex justify-center gap-4 sm:gap-3">
             <motion.button
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={prev}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-[#0052FF] flex items-center justify-center text-white hover:bg-[#0052FF]/90 transition-colors duration-300"
+              className="w-12 h-12 sm:w-12 sm:h-12 rounded-full bg-[#0052FF] flex items-center justify-center text-white hover:bg-[#0052FF]/90 transition-colors duration-300"
             >
               ←
             </motion.button>
@@ -287,7 +287,7 @@ export default function WhatBuildersSay() {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={next}
-              className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black/40 border border-white/[0.08] flex items-center justify-center text-white/60 hover:text-white hover:border-[#0052FF] transition-all duration-300 backdrop-blur-xl"
+              className="w-12 h-12 sm:w-12 sm:h-12 rounded-full bg-black/40 border border-white/[0.08] flex items-center justify-center text-white/60 hover:text-white hover:border-[#0052FF] transition-all duration-300 backdrop-blur-xl"
             >
               →
             </motion.button>
@@ -295,7 +295,7 @@ export default function WhatBuildersSay() {
         </div>
 
         {/* Add bottom padding to account for absolute positioned navigation */}
-        <div className="h-8 sm:h-24"></div>
+        <div className="h-16 sm:h-24"></div>
       </div>
     </section>
   );
