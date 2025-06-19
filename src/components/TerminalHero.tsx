@@ -322,39 +322,44 @@ const bannerLines = [
   }, [lines]);
 
   return (
-    <div className="h-screen bg-black flex flex-col justify-between">
-      <div className="relative flex flex-1">
+    <div className="min-h-screen bg-black flex flex-col justify-between relative overflow-hidden">
+      {/* Fixed grid background */}
+      <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
+          backgroundSize: "50px 50px",
+          backgroundColor: "#000000",
+        }}
+      />
+      <div className="relative flex flex-col lg:flex-row items-stretch z-30 w-full">
         {/* Terminal Content */}
         <div
           ref={terminalRef}
-          className="flex-1 font-[JetBrains_Mono] text-white pt-8 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-[56px] xl:px-[56px] pb-6 overflow-y-auto relative text-[16px] leading-[1.5] hide-scrollbar"
+          className="font-[JetBrains_Mono] text-white pt-8 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-[56px] xl:px-[56px] pb-0 sm:pb-6 relative text-[16px] leading-[1.5] hide-scrollbar z-10 flex-1"
           style={{
-            backgroundImage:
-              "linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px)",
-            backgroundSize: "50px 50px",
-            backgroundColor: "#000000",
             fontSize: "16px",
             letterSpacing: "0.05em",
             fontFamily: 'JetBrains Mono, monospace',
           }}
         >
           {/* --- CTA: Start now button --- */}
-          <div className="w-full flex justify-start mb-6 z-20 relative">
+          <div className="w-full flex justify-start mb-4 sm:mb-6 z-20 relative">
             <a
               href="https://t.me/jessexbt_basebot"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 bg-white text-black font-bold text-xl rounded-xl border-2 border-white px-8 py-4 transition-all duration-150 shadow-none hover:shadow-md hover:bg-gray-100 focus:outline-none font-[Space_Grotesk]"
+              className="flex items-center justify-center gap-3 bg-white text-black font-bold text-lg sm:text-xl rounded-xl border-2 border-white px-6 sm:px-8 py-3 sm:py-4 transition-all duration-150 shadow-none hover:shadow-md hover:bg-gray-100 focus:outline-none font-[Space_Grotesk]"
             >
-              <FaTelegram className="w-7 h-7 text-black" />
+              <FaTelegram className="w-6 h-6 sm:w-7 sm:h-7 text-black" />
               Start now
-              <svg className="w-5 h-5 ml-2 text-black" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 7l-10 10M17 7H7m10 0v10" /></svg>
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2 text-black" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 7l-10 10M17 7H7m10 0v10" /></svg>
             </a>
           </div>
           {/* --- END CTA --- */}
           {/* Scanline effect */}
           <div 
-            className="absolute inset-0 pointer-events-none" 
+            className="absolute inset-0 pointer-events-none z-20" 
             style={{
               background: 'linear-gradient(rgba(255,255,255,0.03) 50%, transparent 50%)',
               backgroundSize: '100% 4px',
@@ -413,11 +418,10 @@ const bannerLines = [
             )}
           </div>
         </div>
-
         {/* Video Section */}
-        <div className="hidden lg:block w-[400px] h-full relative">
+        <div className="hidden lg:flex w-[400px] h-auto relative z-20">
           <video
-            className="absolute inset-0 w-full h-full object-cover"
+            className="w-full h-full object-cover flex-1"
             src="/assets/jessecubes.mp4"
             autoPlay
             loop
@@ -429,113 +433,6 @@ const bannerLines = [
             <source src="/assets/jessecubes.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
-        </div>
-      </div>
-
-      {/* Modern Footer */}
-      <div className="relative z-20 bg-gradient-to-t from-[#111111] to-[#111111]/90 border-t border-white/10 w-full">
-        <div className="max-w-7xl mx-auto px-4 w-full">
-          {/* Main footer content */}
-          <div className="flex flex-col items-center space-y-0 py-1 sm:grid sm:grid-cols-[1fr,auto,1fr] sm:gap-4 sm:items-center sm:space-y-2 sm:py-4 w-full">
-            {/* Left - Controls with modern styling */}
-            <div className="w-full flex flex-col items-center sm:justify-start sm:items-center mb-6 sm:mb-0">
-              {/* On mobile, grid for main buttons */}
-              <div className="grid grid-cols-2 gap-3 w-full max-w-xs sm:flex sm:space-x-2 sm:gap-0 sm:max-w-none">
-                <Link 
-                  href="https://docs.google.com/document/d/1e1ok-cyJdm83ImQzlPshE8uDt4oci7uxaigGqqh_seA/edit?tab=t.0" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 col-span-1"
-                >
-                  <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">MISSION</span>
-                  <svg 
-                    className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
-                <Link 
-                  href="https://jessexbt.gitbook.io/jessexbt-docs/" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  className="group flex items-center justify-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 col-span-1"
-                >
-                  <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">DOCS</span>
-                  <svg 
-                    className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
-                    fill="none" 
-                    viewBox="0 0 24 24" 
-                    stroke="currentColor"
-                  >
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                  </svg>
-                </Link>
-    
-              </div>
-            </div>
-
-            {/* Right - Social Links with modern hover effects */}
-            <div className="flex justify-center sm:justify-end items-center space-x-8 mt-6 mb-4 sm:mt-0 sm:mb-0">
-              <Link href="https://x.com/JesseXBT_ai" target="_blank" rel="noopener noreferrer" className="group">
-                <div className="relative">
-                  <Image
-                    src="/assets/x.png"
-                    alt="X"
-                    width={24}
-                    height={24}
-                    className="opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-125 group-hover:-translate-y-1"
-                  />
-                  <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                </div>
-              </Link>
-              <Link href="https://warpcast.com/jessexbt" target="_blank" rel="noopener noreferrer" className="group">
-                <div className="relative">
-                  <Image
-                    src="/assets/farcaster.png"
-                    alt="Farcaster"
-                    width={24}
-                    height={24}
-                    className="opacity-80 group-hover:opacity-100 transition-all duration-300 transform group-hover:scale-125 group-hover:-translate-y-1"
-                  />
-                  <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                </div>
-              </Link>
-
-              <Link href="https://t.me/jessexbt_basebot" target="_blank" rel="noopener noreferrer" className="group">
-                <div className="relative">
-                  <FaTelegram className="w-6 h-6 text-white/80 group-hover:text-white transition-all duration-300 transform group-hover:scale-125 group-hover:-translate-y-1" />
-                  <div className="absolute -bottom-1 left-1/2 w-6 h-0.5 bg-white transform -translate-x-1/2 scale-x-0 group-hover:scale-x-100 transition-transform duration-300" />
-                </div>
-              </Link>
-  
-            </div>
-
-            {/* Desktop: supported by base and jesse pollak | built with love by a0x, all in one row */}
-            <div className="hidden sm:flex flex-row items-center justify-end w-full space-x-3">
-              <span className="text-white/60 font-mono text-base tracking-wider">
-                supported by <a href="https://base.org" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">base</a> & <a href="https://x.com/jessepollak" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">jesse pollak</a>
-              </span>
-              <span className="text-white/60 font-mono text-base tracking-wider">|</span>
-              <span className="text-white/60 font-mono text-base tracking-wider">
-                built with <span className="inline-block align-middle">🤍</span> by <a href="https://a0x.co" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">a0x</a>
-              </span>
-            </div>
-          </div>
-
-          {/* Mobile: center both lines and remove the bar */}
-          <div className="block sm:hidden w-full pt-2 pb-4">
-            <div className="flex flex-col items-center justify-center space-y-1">
-              <span className="text-white/60 font-mono text-xs tracking-wider text-center">
-                supported by <a href="https://base.org" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">base</a> & <a href="https://x.com/jessepollak" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">jesse pollak</a>
-              </span>
-              <span className="text-white/60 font-mono text-xs tracking-wider text-center">
-                built with <span className="inline-block align-middle">🤍</span> by <a href="https://a0x.co" target="_blank" rel="noopener noreferrer" className="underline hover:text-white transition-colors">a0x</a>
-              </span>
-            </div>
-          </div>
         </div>
       </div>
 
