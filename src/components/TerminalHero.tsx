@@ -322,7 +322,7 @@ const bannerLines = [
   }, [lines]);
 
   return (
-    <div className="h-auto lg:min-h-screen bg-black flex flex-col justify-start relative overflow-hidden">
+    <div className="min-h-[85vh] lg:h-screen bg-black flex flex-col justify-start relative overflow-hidden">
       {/* Fixed grid background */}
       <div className="pointer-events-none fixed inset-0 z-0" aria-hidden="true"
         style={{
@@ -332,33 +332,33 @@ const bannerLines = [
           backgroundColor: "#000000",
         }}
       />
-      <div className="relative flex flex-col lg:flex-row items-stretch z-30 w-full h-auto">
+      <div className="relative flex flex-col lg:flex-row items-stretch z-30 w-full h-full">
         {/* Terminal Content */}
         <div
           ref={terminalRef}
-          className="font-[JetBrains_Mono] text-white pt-8 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-[56px] xl:px-[56px] pb-8 relative text-[16px] leading-[1.5] hide-scrollbar z-10 flex-1 h-auto terminal-container"
+          className="font-[JetBrains_Mono] text-white pt-8 sm:pt-16 md:pt-20 lg:pt-20 xl:pt-24 px-3 sm:px-6 md:px-12 lg:px-[56px] xl:px-[56px] pb-24 sm:pb-8 relative text-[16px] leading-[1.5] hide-scrollbar z-10 flex-1 h-full"
           style={{
             fontSize: "16px",
             letterSpacing: "0.05em",
             fontFamily: 'JetBrains Mono, monospace',
-            maxHeight: '70vh',
+            maxHeight: '100%',
             overflowY: 'auto'
           }}
         >
-          {/* --- CTA: Start now button --- */}
-          <div className="w-full flex justify-start mb-4 sm:mb-6 z-20 relative">
+          {/* --- CTA: Start now button (desktop) --- */}
+          <div className="hidden sm:flex w-full justify-start mb-4 sm:mb-6 z-20 relative">
             <a
               href="https://t.me/jessexbt_basebot"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center justify-center gap-3 bg-white text-black font-bold text-lg sm:text-xl rounded-xl border-2 border-white px-6 sm:px-8 py-3 sm:py-4 transition-all duration-150 shadow-none hover:shadow-md hover:bg-gray-100 focus:outline-none font-[Space_Grotesk]"
+              className="inline-flex items-center justify-center gap-3 bg-white text-black font-bold text-lg sm:text-xl rounded-xl border-2 border-white px-6 sm:px-8 py-3 sm:py-4 transition-all duration-150 shadow-none hover:shadow-md hover:bg-gray-100 focus:outline-none font-[Space_Grotesk]"
             >
-              <FaTelegram className="w-6 h-6 sm:w-7 sm:h-7 text-black" />
-              Start now
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2 text-black" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" d="M17 7l-10 10M17 7H7m10 0v10" /></svg>
+              <FaTelegram className="w-6 h-6 sm:w-7 sm:h-7 text-black flex-shrink-0" aria-hidden="true" />
+              <span className="flex-shrink-0 leading-[1] inline-flex items-center">Start now</span>
+              <svg className="w-4 h-4 sm:w-5 sm:h-5 ml-2 text-black flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M17 7l-10 10M17 7H7m10 0v10" /></svg>
             </a>
           </div>
-          {/* --- END CTA --- */}
+
           {/* Scanline effect */}
           <div 
             className="absolute inset-0 pointer-events-none z-20" 
@@ -373,7 +373,7 @@ const bannerLines = [
           <BouncingLogo />
 
           {/* Terminal content */}
-          <div className="relative z-10">
+          <div className="relative z-10 flex-1 min-h-0">
             {lines.map((line, index) => (
               <motion.div 
                 key={line.id}
@@ -418,6 +418,21 @@ const bannerLines = [
             {isPlaying && (
               <span className="inline-block h-4 sm:h-5 w-1 sm:w-2 bg-[#00f0ff] ml-2 sm:ml-4 animate-pulse-glow" />
             )}
+          </div>
+
+          {/* --- CTA: Start now button (mobile) --- */}
+          <div className="sm:hidden absolute left-0 right-0 bottom-0 w-full flex justify-center z-50 bg-gradient-to-t from-black via-black to-transparent pt-8 pb-4">
+            <a
+              href="https://t.me/jessexbt_basebot"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-4 bg-white text-black font-bold text-[22px] rounded-xl border-2 border-white px-8 py-4 transition-all duration-150 shadow-none hover:shadow-md hover:bg-gray-100 focus:outline-none font-[Space_Grotesk] w-[calc(100%-2rem)] mx-4"
+              style={{ minHeight: '64px' }}
+            >
+              <FaTelegram className="w-7 h-7 text-black flex-shrink-0" aria-hidden="true" />
+              <span className="flex-shrink-0 leading-[1] inline-flex items-center">Start now</span>
+              <svg className="w-5 h-5 ml-2 text-black flex-shrink-0" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24" aria-hidden="true"><path strokeLinecap="round" strokeLinejoin="round" d="M17 7l-10 10M17 7H7m10 0v10" /></svg>
+            </a>
           </div>
         </div>
         {/* Video Section */}
