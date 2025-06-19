@@ -13,7 +13,7 @@ const Footer = () => {
           {/* Left - Controls with modern styling */}
           <div className="w-full flex flex-col items-center sm:justify-start sm:items-center mb-6 sm:mb-0">
             {/* On mobile, grid for main buttons */}
-            <div className="grid grid-cols-2 gap-3 w-full max-w-xs sm:flex sm:space-x-2 sm:gap-0 sm:max-w-none">
+            <div className="grid grid-cols-3 gap-3 w-full max-w-xs sm:flex sm:space-x-2 sm:gap-0 sm:max-w-none">
               <Link 
                 href="https://docs.google.com/document/d/1e1ok-cyJdm83ImQzlPshE8uDt4oci7uxaigGqqh_seA/edit?tab=t.0" 
                 target="_blank" 
@@ -37,6 +37,22 @@ const Footer = () => {
                 className="group flex items-center justify-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 col-span-1"
               >
                 <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">DOCS</span>
+                <svg 
+                  className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </Link>
+              <Link 
+                href="https://linktr.ee/jessexbt" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="group flex items-center justify-center space-x-2 px-4 py-2 rounded-lg bg-white/5 hover:bg-white/10 transition-all duration-300 col-span-1"
+              >
+                <span className="text-white/70 group-hover:text-white font-mono text-sm tracking-wider transition-all duration-300">CONTACT</span>
                 <svg 
                   className="w-4 h-4 text-white/70 group-hover:text-white transform group-hover:translate-x-1 transition-all duration-300" 
                   fill="none" 
