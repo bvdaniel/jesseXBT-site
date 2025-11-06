@@ -9,7 +9,7 @@ const BASE_BLUE = "#0052FF";
 const instructions = [
   {
     number: 1,
-    text: "say hi to jesseXBT on telegram, farcaster or X."
+    text: "say hi to jesseXBT on Base App (jessexbt.base.eth) or telegram (jessexbt_basebot)."
   },
   {
     number: 2,

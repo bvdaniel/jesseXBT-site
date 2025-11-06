@@ -57,7 +57,6 @@ const TypeWriter = ({
       'X': 'https://x.com/JesseXBT_ai',
       'Farcaster': 'https://warpcast.com/jessexbt',
       'Telegram': 'https://t.me/jessexbt_basebot',
-      'Zora': 'https://zora.co/@jessexbt',
       'Jesse Pollak': 'https://x.com/jessepollak'
     };
 
@@ -222,7 +221,7 @@ const bannerLines = [
     {
       username: "jesseXBT",
       message:
-        "you can chat with me on Telegram now to start getting support and feedback on your project.",
+        "you can chat with me on the 🟦 Base App (chat with jessexbt.base.eth) or Telegram now to start getting support and feedback on your project.",
     },
     {
       username: "jesseXBT",
