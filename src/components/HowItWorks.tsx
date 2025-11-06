@@ -56,20 +56,20 @@ const chatMessages = [
   },
 ];
 
-function autoLink(text: string) {
+function autoLink(text: string, linkClass: string) {
   if (!text) return "";
   const urlRegex = /(https?:\/\/[\w.-]+(?:\.[\w\.-]+)+(?:[\w\-\._~:/?#[\]@!$&'()*+,;=]+)?)/g;
   const parts = text.split(urlRegex);
   return parts.map((part, i) => {
     if (urlRegex.test(part)) {
-      return <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="text-[#0052FF] hover:text-[#0052FF]/80 underline transition-colors duration-200">{part}</a>;
+      return <a key={i} href={part} target="_blank" rel="noopener noreferrer" className={`${linkClass} underline transition-colors duration-200`}>{part}</a>;
     }
     return part.split('\n').map((line, j) => j > 0 ? [<br key={j} />, line] : line);
   });
 }
 
-type TypewriterProps = { text: string; speed?: number; className?: string };
-function Typewriter({ text, speed = 18, className }: TypewriterProps) {
+type TypewriterProps = { text: string; speed?: number; className?: string; linkClassName?: string };
+function Typewriter({ text, speed = 18, className, linkClassName = "text-blue-500 hover:text-blue-600" }: TypewriterProps) {
   const [displayed, setDisplayed] = useState("");
   const [isComplete, setIsComplete] = useState(false);
 
@@ -92,7 +92,7 @@ function Typewriter({ text, speed = 18, className }: TypewriterProps) {
 
   return (
     <span className={className}>
-      {isComplete ? autoLink(text) : displayed}
+      {isComplete ? autoLink(text, linkClassName) : displayed}
       {!isComplete && (
         <span className="inline-block w-2 h-4 ml-1 bg-[#0052FF] animate-pulse" />
       )}
@@ -102,10 +102,10 @@ function Typewriter({ text, speed = 18, className }: TypewriterProps) {
 
 const HowItWorks = () => {
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center bg-black py-24 overflow-hidden">
+    <section className="relative min-h-screen flex flex-col items-center justify-center bg-white text-black py-24 overflow-hidden">
       {/* Dot matrix background */}
       <div className="absolute inset-0" style={{
-        backgroundImage: `radial-gradient(circle at center, rgba(255,255,255,0.05) 2px, transparent 2px)`,
+        backgroundImage: `radial-gradient(circle at center, rgba(0,0,0,0.03) 2px, transparent 2px)`,
         backgroundSize: '48px 48px',
       }} />
 
@@ -156,7 +156,7 @@ const HowItWorks = () => {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
-            className="text-[64px] md:text-[80px] font-bold text-white mb-6 tracking-[-0.02em]"
+            className="text-[64px] md:text-[80px] font-bold text-black mb-6 tracking-[-0.02em]"
             style={{ fontFamily: 'var(--font-space-grotesk)' }}
           >
             how it works
@@ -201,7 +201,7 @@ const HowItWorks = () => {
                         </span>
                       </div>
                       <div className="pl-4 md:pl-8">
-                        <p className="text-[20px] md:text-[24px] text-white/90 leading-[1.3] md:leading-[1.2] tracking-[-0.02em] break-words" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
+                        <p className="text-[20px] md:text-[24px] text-gray-800 leading-[1.3] md:leading-[1.2] tracking-[-0.02em] break-words" style={{ fontFamily: 'var(--font-space-grotesk)' }}>
                           {step.text}
                         </p>
                       </div>
@@ -220,10 +220,8 @@ const HowItWorks = () => {
             viewport={{ once: true }}
             className="hidden lg:block absolute top-0 right-0 w-[48%]"
           >
-            <div className="relative">
-              {/* Glassmorphic container */}
-              <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0052FF]/20 to-transparent rounded-2xl blur opacity-50"></div>
-              <div className="relative bg-[#030712]/40 backdrop-blur-xl border border-white/[0.08] rounded-2xl p-6 space-y-4">
+            <div className="relative shadow-2xl shadow-gray-500/10 rounded-2xl">
+              <div className="relative bg-white border border-gray-100 rounded-2xl p-6 space-y-4">
                 {chatMessages.map((msg, idx) => (
                   <motion.div
                     key={idx}
@@ -235,41 +233,40 @@ const HowItWorks = () => {
                   >
                     {msg.sender === "jesse" && (
                       <div className="flex-shrink-0 relative">
-                        <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0052FF]/30 to-transparent rounded-full blur opacity-50"></div>
                         <Image
                           src={msg.avatar}
                           alt="JesseXBT avatar"
                           width={32}
                           height={32}
-                          className="rounded-full relative border border-white/[0.08]"
+                          className="rounded-full relative"
                         />
                       </div>
                     )}
                     <div 
                       className={`max-w-[80%] ${
                         msg.sender === "user" 
-                          ? "bg-[#0052FF]/[0.08] border-[#0052FF]/20" 
-                          : "bg-[#030712]/60 border-white/[0.08]"
-                      } backdrop-blur-xl px-4 py-3 rounded-2xl border`}
+                          ? "bg-blue-500 text-white" 
+                          : "bg-gray-100 text-gray-800"
+                      } px-4 py-3 rounded-2xl`}
                     >
                       <Typewriter
                         text={msg.text}
-                        className="text-white/90 text-base font-[JetBrains_Mono] leading-relaxed"
+                        className={`text-base font-[JetBrains_Mono] leading-relaxed ${msg.sender === "user" ? "text-white" : "text-gray-900"}`}
+                        linkClassName={msg.sender === 'user' ? "text-blue-200 hover:text-white" : "text-blue-600 hover:text-blue-700"}
                         speed={16}
                       />
                       <div className="text-right mt-1">
-                        <span className="text-white/40 text-xs font-[JetBrains_Mono]">{msg.time}</span>
+                        <span className={`text-xs font-[JetBrains_Mono] ${msg.sender === 'user' ? 'text-blue-200' : 'text-gray-500'}`}>{msg.time}</span>
                       </div>
                     </div>
                     {msg.sender === "user" && (
                       <div className="flex-shrink-0 relative">
-                        <div className="absolute -inset-0.5 bg-gradient-to-r from-[#0052FF]/30 to-transparent rounded-full blur opacity-50"></div>
                         <Image
                           src={msg.avatar}
                           alt="User avatar"
                           width={32}
                           height={32}
-                          className="rounded-full relative border border-white/[0.08]"
+                          className="rounded-full relative"
                         />
                       </div>
                     )}

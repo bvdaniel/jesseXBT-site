@@ -15,7 +15,7 @@ export const metadata: Metadata = {
     siteName: 'jesseXBT',
     images: [
       {
-        url: '/assets/jesseXBT-preview.png',
+        url: '/assets/jesseXBT-preview2.png',
         width: 1200,
         height: 630,
         alt: 'jesseXBT Preview',
