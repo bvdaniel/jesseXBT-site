@@ -57,7 +57,8 @@ const TypeWriter = ({
       'X': 'https://x.com/JesseXBT_ai',
       'Farcaster': 'https://warpcast.com/jessexbt',
       'Telegram': 'https://t.me/jessexbt_basebot',
-      'Jesse Pollak': 'https://x.com/jessepollak'
+      'Jesse Pollak': 'https://x.com/jessepollak',
+      'Base App': 'https://join.base.app/',
     };
 
     let processedText = displayedText;
